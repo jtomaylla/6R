@@ -4,17 +4,12 @@
         function js_validar() {
             var frm = document.getElementById("formmain");
             var txtDescripcion = document.getElementById("<%= txtDescripcion.ClientID%>");
-            var txtDireccion = document.getElementById("<%= txtDireccion.ClientID%>");
 
             if (!JS_hasValue(txtDescripcion, "TEXT")) {
                 if (!JS_onError(frm, txtDescripcion, "TEXT", "Ingrese Descripción"))
                     return false;
             }
 
-//            if (!JS_hasValue(txtDireccion, "TEXT")) {
-//                if (!JS_onError(frm, txtDireccion, "TEXT", "Ingrese Dirección"))
-//                    return false;
-//            }
             return true;
         }
     </script>
@@ -27,7 +22,7 @@
 <asp:Label ID="lblMensaje" runat="server" Text="" CssClass="cssMensaje"></asp:Label>
 <asp:Panel ID="panLista" runat="server">
     <asp:Button ID="btnNuevo" runat="server" Text="Nuevo" CssClass="cssButton" onclick="btnNuevo_Click" />
-    <asp:gridview id="gvLista" runat="server" 
+ <%--   <asp:gridview id="gvLista" runat="server" 
         autogeneratecolumns="False"
         OnRowCommand="gvLista_RowCommand"  
         CssClass="gridview"
@@ -54,7 +49,31 @@
         </asp:TemplateField>
     </Columns>
     <PagerStyle CssClass="gridview_pager"></PagerStyle>
-    </asp:gridview>
+    </asp:gridview>--%>
+        <asp:gridview id="gvLista" runat="server" 
+        autogeneratecolumns="False"
+        OnSelectedIndexChanged="gvLista_SelectedIndexChanged"
+        CssClass="gridview"
+        PagerStyle-CssClass="gridview_pager" 
+        AlternatingRowStyle-CssClass="gridview_alter"
+    >
+    <AlternatingRowStyle CssClass="gridview_alter"></AlternatingRowStyle>
+    <PagerStyle CssClass="gridview_pager"></PagerStyle>
+    <Columns>
+        <asp:BoundField ReadOnly="True" DataField="CodigoSede" HeaderText="ID" ItemStyle-Width="50px"></asp:BoundField>
+        <asp:BoundField ReadOnly="True" DataField="Nombre" HeaderText="Descripción" ItemStyle-Width="500px"></asp:BoundField>
+        <asp:CheckBoxField DataField="Estado" HeaderText="Estado"   />
+        <asp:TemplateField ShowHeader="False">
+            <ItemTemplate>
+                <asp:Button ID="btnVerSede" runat="server" Text="Editar" 
+                    CommandName="Seleccionar" 
+                    CausesValidation="False" 
+                    CommandArgument = '<%# Bind("CodigoSede") %>'
+                    CssClass="cssButton" />
+            </ItemTemplate>
+        </asp:TemplateField>
+    </Columns>
+    </asp:gridview> 
 </asp:Panel>
 <asp:Panel ID="panRegistro" runat="server">
     <div class="cssTablaCabeceraRegistro">Registro</div>
