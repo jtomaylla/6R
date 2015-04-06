@@ -44,8 +44,8 @@ namespace pe.com.sil.dal.dao
                       obj.Fiscalizado = (string)dr["Fiscalizado"];
                   if (dr["CodigoPuesto"] != System.DBNull.Value)
                       obj.CodigoPuesto = (int)dr["CodigoPuesto"];
-                  if (dr["CodigoGrado"] != System.DBNull.Value)
-                      obj.CodigoGrado = (int)dr["CodigoGrado"];
+                  if (dr["GradoPuesto"] != System.DBNull.Value)
+                      obj.GradoPuesto = (int)dr["GradoPuesto"];
                   if (dr["CodigoArea"] != System.DBNull.Value)
                       obj.CodigoArea = (int)dr["CodigoArea"];
                   if (dr["CodigoUnidad"] != System.DBNull.Value)
@@ -58,14 +58,14 @@ namespace pe.com.sil.dal.dao
                       obj.CodigoSede = (int)dr["CodigoSede"];
                   if (dr["Estado"] != System.DBNull.Value)
                       obj.Estado = (string)dr["Estado"];
-                  if (dr["fecha_creacion"] != System.DBNull.Value)
-                      obj.Fecha_creacion = (DateTime)dr["fecha_creacion"];
-                  if (dr["usuario_creacion"] != System.DBNull.Value)
-                      obj.Usuario_creacion = (int)dr["usuario_creacion"];
-                  if (dr["fecha_modificacion"] != System.DBNull.Value)
-                      obj.Fecha_modificacion = (DateTime)dr["fecha_modificacion"];
-                  if (dr["Usuario_modificacion"] != System.DBNull.Value)
-                      obj.Usuario_modificacion = (int)dr["usuario_modificacion"];
+                  if (dr["Puesto"] != System.DBNull.Value)
+                      obj.Puesto = (string)dr["Puesto"];
+                  if (dr["Grado"] != System.DBNull.Value)
+                      obj.Grado = (string)dr["Grado"];
+                  if (dr["Unidad"] != System.DBNull.Value)
+                      obj.Unidad = (string)dr["Unidad"];
+                  if (dr["Sede"] != System.DBNull.Value)
+                      obj.Sede = (string)dr["Sede"];
 
 				   Lista.Add(obj);
 
@@ -89,7 +89,7 @@ namespace pe.com.sil.dal.dao
                   obj = new EmpleadoDTO();
 
                   if (dr["IdEmpleado"] != System.DBNull.Value)
-                      obj.IdEmpleado = (int)dr["IdEmpleado"];
+                       obj.IdEmpleado = (int)dr["IdEmpleado"];
                   if (dr["CodigoEmpleado"] != System.DBNull.Value)
                       obj.CodigoEmpleado = (string)dr["CodigoEmpleado"];
                   if (dr["DocumentoIdentidad"] != System.DBNull.Value)
@@ -102,8 +102,8 @@ namespace pe.com.sil.dal.dao
                       obj.Fiscalizado = (string)dr["Fiscalizado"];
                   if (dr["CodigoPuesto"] != System.DBNull.Value)
                       obj.CodigoPuesto = (int)dr["CodigoPuesto"];
-                  if (dr["CodigoGrado"] != System.DBNull.Value)
-                      obj.CodigoGrado = (int)dr["CodigoGrado"];
+                  if (dr["GradoPuesto"] != System.DBNull.Value)
+                      obj.GradoPuesto = (int)dr["GradoPuesto"];
                   if (dr["CodigoArea"] != System.DBNull.Value)
                       obj.CodigoArea = (int)dr["CodigoArea"];
                   if (dr["CodigoUnidad"] != System.DBNull.Value)
@@ -116,14 +116,14 @@ namespace pe.com.sil.dal.dao
                       obj.CodigoSede = (int)dr["CodigoSede"];
                   if (dr["Estado"] != System.DBNull.Value)
                       obj.Estado = (string)dr["Estado"];
-                  if (dr["fecha_creacion"] != System.DBNull.Value)
-                      obj.Fecha_creacion = (DateTime)dr["fecha_creacion"];
-                  if (dr["usuario_creacion"] != System.DBNull.Value)
-                      obj.Usuario_creacion = (int)dr["usuario_creacion"];
-                  if (dr["fecha_modificacion"] != System.DBNull.Value)
-                      obj.Fecha_modificacion = (DateTime)dr["fecha_modificacion"];
-                  if (dr["Usuario_modificacion"] != System.DBNull.Value)
-                      obj.Usuario_modificacion = (int)dr["usuario_modificacion"];
+                  //if (dr["fecha_creacion"] != System.DBNull.Value)
+                  //    obj.Fecha_creacion = (DateTime)dr["fecha_creacion"];
+                  //if (dr["usuario_creacion"] != System.DBNull.Value)
+                  //    obj.Usuario_creacion = (int)dr["usuario_creacion"];
+                  //if (dr["fecha_modificacion"] != System.DBNull.Value)
+                  //    obj.Fecha_modificacion = (DateTime)dr["fecha_modificacion"];
+                  //if (dr["usuario_modificacion"] != System.DBNull.Value)
+                  //    obj.Usuario_modificacion = (int)dr["usuario_modificacion"];
 
               }
           }
@@ -158,8 +158,8 @@ namespace pe.com.sil.dal.dao
                       obj.Fiscalizado = (string)dr["Fiscalizado"];
                   if (dr["CodigoPuesto"] != System.DBNull.Value)
                       obj.CodigoPuesto = (int)dr["CodigoPuesto"];
-                  if (dr["CodigoGrado"] != System.DBNull.Value)
-                      obj.CodigoGrado = (int)dr["CodigoGrado"];
+                  if (dr["GradoPuesto"] != System.DBNull.Value)
+                      obj.GradoPuesto = (int)dr["GradoPuesto"];
                   if (dr["CodigoArea"] != System.DBNull.Value)
                       obj.CodigoArea = (int)dr["CodigoArea"];
                   if (dr["CodigoUnidad"] != System.DBNull.Value)
@@ -172,14 +172,14 @@ namespace pe.com.sil.dal.dao
                       obj.CodigoSede = (int)dr["CodigoSede"];
                   if (dr["Estado"] != System.DBNull.Value)
                       obj.Estado = (string)dr["Estado"];
-                  if (dr["fecha_creacion"] != System.DBNull.Value)
-                      obj.Fecha_creacion = (DateTime)dr["fecha_creacion"];
-                  if (dr["usuario_creacion"] != System.DBNull.Value)
-                      obj.Usuario_creacion = (int)dr["usuario_creacion"];
-                  if (dr["fecha_modificacion"] != System.DBNull.Value)
-                      obj.Fecha_modificacion = (DateTime)dr["fecha_modificacion"];
-                  if (dr["Usuario_modificacion"] != System.DBNull.Value)
-                      obj.Usuario_modificacion = (int)dr["usuario_modificacion"];
+                  //if (dr["fecha_creacion"] != System.DBNull.Value)
+                  //    obj.Fecha_creacion = (DateTime)dr["fecha_creacion"];
+                  //if (dr["usuario_creacion"] != System.DBNull.Value)
+                  //    obj.Usuario_creacion = (int)dr["usuario_creacion"];
+                  //if (dr["fecha_modificacion"] != System.DBNull.Value)
+                  //    obj.Fecha_modificacion = (DateTime)dr["fecha_modificacion"];
+                  //if (dr["usuario_modificacion"] != System.DBNull.Value)
+                  //    obj.Usuario_modificacion = (int)dr["usuario_modificacion"];
 
 
                   Lista.Add(obj);
@@ -214,8 +214,8 @@ namespace pe.com.sil.dal.dao
                       obj.Fiscalizado = (string)dr["Fiscalizado"];
                   if (dr["CodigoPuesto"] != System.DBNull.Value)
                       obj.CodigoPuesto = (int)dr["CodigoPuesto"];
-                  if (dr["CodigoGrado"] != System.DBNull.Value)
-                      obj.CodigoGrado = (int)dr["CodigoGrado"];
+                  if (dr["GradoPuesto"] != System.DBNull.Value)
+                      obj.GradoPuesto = (int)dr["GradoPuesto"];
                   if (dr["CodigoArea"] != System.DBNull.Value)
                       obj.CodigoArea = (int)dr["CodigoArea"];
                   if (dr["CodigoUnidad"] != System.DBNull.Value)
@@ -228,14 +228,14 @@ namespace pe.com.sil.dal.dao
                       obj.CodigoSede = (int)dr["CodigoSede"];
                   if (dr["Estado"] != System.DBNull.Value)
                       obj.Estado = (string)dr["Estado"];
-                  if (dr["fecha_creacion"] != System.DBNull.Value)
-                      obj.Fecha_creacion = (DateTime)dr["fecha_creacion"];
-                  if (dr["usuario_creacion"] != System.DBNull.Value)
-                      obj.Usuario_creacion = (int)dr["usuario_creacion"];
-                  if (dr["fecha_modificacion"] != System.DBNull.Value)
-                      obj.Fecha_modificacion = (DateTime)dr["fecha_modificacion"];
-                  if (dr["Usuario_modificacion"] != System.DBNull.Value)
-                      obj.Usuario_modificacion = (int)dr["usuario_modificacion"];
+                  //if (dr["fecha_creacion"] != System.DBNull.Value)
+                  //    obj.Fecha_creacion = (DateTime)dr["fecha_creacion"];
+                  //if (dr["usuario_creacion"] != System.DBNull.Value)
+                  //    obj.Usuario_creacion = (int)dr["usuario_creacion"];
+                  //if (dr["fecha_modificacion"] != System.DBNull.Value)
+                  //    obj.Fecha_modificacion = (DateTime)dr["fecha_modificacion"];
+                  //if (dr["Usuario_modificacion"] != System.DBNull.Value)
+                  //    obj.Usuario_modificacion = (int)dr["usuario_modificacion"];
 
                   
                   Lista.Add(obj);
@@ -255,7 +255,7 @@ namespace pe.com.sil.dal.dao
           db.AddInParameter(dbCommand, "@CodigoCargo", DbType.Int32, obj.CodigoCargo);
           db.AddInParameter(dbCommand, "@Fiscalizado", DbType.String, obj.Fiscalizado);
           db.AddInParameter(dbCommand, "@CodigoPuesto", DbType.Int32, obj.CodigoPuesto);
-          db.AddInParameter(dbCommand, "@CodigoGrado", DbType.Int32, obj.CodigoGrado);
+          db.AddInParameter(dbCommand, "@GradoPuesto", DbType.Int32, obj.GradoPuesto);
           db.AddInParameter(dbCommand, "@CodigoArea", DbType.Int32, obj.CodigoArea);
           db.AddInParameter(dbCommand, "@CodigoUnidad", DbType.Int32, obj.CodigoUnidad);
           db.AddInParameter(dbCommand, "@FechaIngreso", DbType.DateTime, GetFechaValida(obj.FechaIngreso));
@@ -280,7 +280,7 @@ namespace pe.com.sil.dal.dao
           db.AddInParameter(dbCommand, "@CodigoCargo", DbType.Int32, obj.CodigoCargo);
           db.AddInParameter(dbCommand, "@Fiscalizado", DbType.String, obj.Fiscalizado);
           db.AddInParameter(dbCommand, "@CodigoPuesto", DbType.Int32, obj.CodigoPuesto);
-          db.AddInParameter(dbCommand, "@CodigoGrado", DbType.Int32, obj.CodigoGrado);
+          db.AddInParameter(dbCommand, "@GradoPuesto", DbType.Int32, obj.GradoPuesto);
           db.AddInParameter(dbCommand, "@CodigoArea", DbType.Int32, obj.CodigoArea);
           db.AddInParameter(dbCommand, "@CodigoUnidad", DbType.Int32, obj.CodigoUnidad);
           db.AddInParameter(dbCommand, "@FechaIngreso", DbType.DateTime, obj.FechaIngreso);

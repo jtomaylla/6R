@@ -18,7 +18,7 @@
                     return false;
             }
             if (!JS_hasValue(documento, "TEXT")) {
-                if (!JS_onError(frm, documento, "TEXT", "Ingrese Nombre"))
+                if (!JS_onError(frm, documento, "TEXT", "Ingrese Documneto"))
                     return false;
             }
             return true;
@@ -30,9 +30,10 @@
 <asp:Label ID="lblMensaje" runat="server" Text="" CssClass="cssMensaje"></asp:Label>
 
 <asp:Panel ID="panLista" runat="server">
-    Buscur:<asp:TextBox ID="txtBusqueda" runat="server" Width="400px"></asp:TextBox>
+    Buscar:<asp:TextBox ID="txtBusqueda" runat="server" Width="400px"></asp:TextBox>
     <asp:Button ID="btnBuscar" CssClass="cssButton" runat="server" Text="Buscar" onclick="btnBuscar_Click" />
     <asp:Button ID="btnNuevo" runat="server" Text="Nuevo" CssClass="cssButton" onclick="btnNuevo_Click" />
+    
     <asp:gridview id="gvLista" runat="server" 
         autogeneratecolumns="False"
         OnRowCommand="gvLista_RowCommand"  
@@ -47,10 +48,10 @@
     <PagerStyle CssClass="gridview_pager"></PagerStyle>
     <Columns>
         <asp:BoundField ReadOnly="True" DataField="IdEmpleado" HeaderText="ID" ItemStyle-Width="50px"></asp:BoundField>
-        <asp:BoundField ReadOnly="True" DataField="Codigo" HeaderText="Código" ItemStyle-Width="100px"></asp:BoundField>
+        <asp:BoundField ReadOnly="True" DataField="CodigoEmpleado" HeaderText="Código" ItemStyle-Width="100px"></asp:BoundField>
         <asp:BoundField ReadOnly="True" DataField="Nombre" HeaderText="Nombre" ItemStyle-Width="500px"></asp:BoundField>
         <asp:BoundField ReadOnly="True" DataField="Puesto" HeaderText="Puesto" ItemStyle-Width="200px"></asp:BoundField>
-        <asp:BoundField ReadOnly="True" DataField="GradoPuesto" HeaderText="Grado" ItemStyle-Width="120px"></asp:BoundField>
+        <asp:BoundField ReadOnly="True" DataField="Grado" HeaderText="Grado" ItemStyle-Width="120px"></asp:BoundField>
         <asp:BoundField ReadOnly="True" DataField="Unidad" HeaderText="Unidad" ItemStyle-Width="120px"></asp:BoundField>
         <asp:BoundField ReadOnly="True" DataField="Sede" HeaderText="Sede" ItemStyle-Width="120px"></asp:BoundField>
         <asp:BoundField ReadOnly="True" DataField="FechaIngreso" HeaderText="Fecha Ingreso" ItemStyle-Width="100px"></asp:BoundField>
@@ -80,8 +81,7 @@
         <tr>
             <td>Codigo</td>
             <td>:</td>
-            <td><asp:TextBox ID="txtCodigoEmpleado" runat="server" Width="200px" 
-                    ontextchanged="txtCodigoEmpleado_TextChanged"></asp:TextBox></td>
+            <td><asp:TextBox ID="txtCodigoEmpleado" runat="server" Width="200px" ></asp:TextBox></td>
         </tr>
         <tr>
             <td>Documento Identidad</td>

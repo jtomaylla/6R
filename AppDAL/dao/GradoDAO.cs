@@ -10,11 +10,36 @@ namespace pe.com.sil.dal.dao
 {
     public class GradoDAO
     {
-
+        const string C_BUSCAR_POR_CLAVE = "SELECT CodigoGrado, Nombre, estado " +
+                                "FROM Grado " +
+                                "WHERE CodigoGrado = @CodigoGrado";
         const string C_LISTAR = "USP_Grado_Listar";
         const string C_ACTUALIZAR = "USP_Grado_Actualizar";
         const string C_AGREGAR = "USP_Grado_Agregar";
         const string C_ELIMINAR = "USP_Grado_Eliminar";
+        public GradoDTO ListarPorClave(int id)
+        {
+            GradoDTO obj = new GradoDTO();
+            Database db = DatabaseFactory.CreateDatabase("ApplicationConnectionString");
+            DbCommand dbCommand = db.GetSqlStringCommand(C_BUSCAR_POR_CLAVE);
+            db.AddInParameter(dbCommand, "@CodigoGrado", DbType.Int32, id);
+
+            using (IDataReader dr = db.ExecuteReader(dbCommand))
+            {
+                if (dr.Read())
+                {
+                    obj.CodigoGrado = (int)dr["CodigoGrado"];
+
+                    if (dr["Nombre"] != System.DBNull.Value)
+                        obj.Nombre = (string)dr["Nombre"];
+
+                    if (dr["Estado"] != System.DBNull.Value)
+                        obj.Estado = (string)dr["Estado"];
+
+                }
+            }
+            return obj;
+        }
 
         public List<GradoDTO> Listar()
         {

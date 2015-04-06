@@ -16,7 +16,7 @@ namespace pe.com.sil.dal.dto
       private int _CodigoCargo;
       private string _Fiscalizado;
       private int _CodigoPuesto;
-      private int _CodigoGrado;
+      private int _GradoPuesto;
       private int _CodigoArea;
       private int _CodigoUnidad;
       private DateTime _FechaIngreso;
@@ -27,6 +27,13 @@ namespace pe.com.sil.dal.dto
       private int _usuario_creacion;
       private DateTime _fecha_modificacion;
       private int _usuario_modificacion;
+      private string _Puesto;
+      private string _Grado;
+      private string _Unidad;
+      private string _Sede;
+
+
+ 
 
       public EmpleadoDTO() { }
 
@@ -38,12 +45,16 @@ namespace pe.com.sil.dal.dto
            int _CodigoCargo,
            string _Fiscalizado,
            int _CodigoPuesto,
-           int _CodigoGrado,
+           string _Puesto,
+           int _GradoPuesto,
+           string _Grado,
            int _CodigoArea,
+           string _Unidad,
            int _CodigoUnidad,
            DateTime _FechaIngreso,
            int _CodigoJefe,
            int _CodigoSede,
+           string _Sede,
            string _Estado,
            DateTime _fecha_creacion,
            int _usuario_creacion,
@@ -57,12 +68,16 @@ namespace pe.com.sil.dal.dto
           this._CodigoCargo = _CodigoCargo;
           this._Fiscalizado = _Fiscalizado;
           this._CodigoPuesto = _CodigoPuesto;
-          this._CodigoGrado = _CodigoGrado;
+          this._Puesto = _Puesto;
+          this._GradoPuesto = _GradoPuesto;
+          this._Grado = _Grado;
           this._CodigoArea = _CodigoArea;
           this._CodigoUnidad = _CodigoUnidad;
+          this._Unidad = _Unidad;
           this._FechaIngreso = _FechaIngreso;
           this._CodigoJefe = _CodigoJefe;
           this._CodigoSede = _CodigoSede;
+          this._Sede = _Sede;
           this._Estado = _Estado;
           this._fecha_creacion = _fecha_creacion;
           this._usuario_creacion = _usuario_creacion;
@@ -119,10 +134,10 @@ namespace pe.com.sil.dal.dto
       }
 
 
-      public int CodigoGrado
+      public int GradoPuesto
       {
-          get { return _CodigoGrado; }
-          set { _CodigoGrado = value; }
+          get { return _GradoPuesto; }
+          set { _GradoPuesto = value; }
       }
 
 
@@ -193,6 +208,54 @@ namespace pe.com.sil.dal.dto
       {
           get { return _usuario_modificacion; }
           set { _usuario_modificacion = value; }
+      }
+
+
+      public Boolean EstadoBool
+      {
+          get
+          {
+              if (_Estado == "1")
+                  return true;
+              else
+                  return false;
+          }
+      }
+      public Boolean FiscalizadoBool
+      {
+          get
+          {
+              if (_Fiscalizado == "1")
+                  return true;
+              else
+                  return false;
+          }
+      }
+      public string Puesto
+      {
+          get { return _Puesto; }
+          set { _Puesto = value; }
+      }
+
+
+      public string Grado
+      {
+          get { return _Grado; }
+          set { _Grado = value; }
+      }
+
+
+      public string Unidad
+      {
+          get { return _Unidad; }
+          set { _Unidad = value; }
+      }
+
+
+      public string Sede
+      {
+          get { return _Sede; }
+          set { _Sede = value; }
       }
       //Constructor
 

@@ -126,7 +126,13 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="frmEmpleado.aspx" />
     <Content Include="error.html" />
+    <Content Include="frmMantArea.aspx" />
+    <Content Include="frmMantCargo.aspx" />
+    <Content Include="frmMantGrado.aspx" />
+    <Content Include="frmMantJefe.aspx" />
+    <Content Include="frmMantPuesto.aspx" />
     <Content Include="frmMantSede.aspx" />
+    <Content Include="frmMantUnidad.aspx" />
     <Content Include="Images\btn-bg1.gif" />
     <Content Include="Images\close.gif" />
     <Content Include="Images\del.gif" />
@@ -224,12 +230,54 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="frmMantArea.aspx.cs">
+      <DependentUpon>frmMantArea.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmMantArea.aspx.designer.cs">
+      <DependentUpon>frmMantArea.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmMantCargo.aspx.cs">
+      <DependentUpon>frmMantCargo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmMantCargo.aspx.designer.cs">
+      <DependentUpon>frmMantCargo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmMantGrado.aspx.cs">
+      <DependentUpon>frmMantGrado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmMantGrado.aspx.designer.cs">
+      <DependentUpon>frmMantGrado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmMantJefe.aspx.cs">
+      <DependentUpon>frmMantJefe.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmMantJefe.aspx.designer.cs">
+      <DependentUpon>frmMantJefe.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmMantPuesto.aspx.cs">
+      <DependentUpon>frmMantPuesto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmMantPuesto.aspx.designer.cs">
+      <DependentUpon>frmMantPuesto.aspx</DependentUpon>
+    </Compile>
     <Compile Include="frmMantSede.aspx.cs">
       <DependentUpon>frmMantSede.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="frmMantSede.aspx.designer.cs">
       <DependentUpon>frmMantSede.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmMantUnidad.aspx.cs">
+      <DependentUpon>frmMantUnidad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmMantUnidad.aspx.designer.cs">
+      <DependentUpon>frmMantUnidad.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

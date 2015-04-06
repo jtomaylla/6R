@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmMantSede.aspx.cs" Inherits="AppWeb.frmMantSede" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmMantArea.aspx.cs" Inherits="AppWeb.frmMantArea" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <script type="text/javascript">
         function js_validar() {
@@ -17,7 +17,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <div class="cssTituloPagina">
     <p>
-        Mantenimiento de Sede</p>
+        Mantenimiento de Area</p>
     </div>
 <asp:Label ID="lblMensaje" runat="server" Text="" CssClass="cssMensaje"></asp:Label>
 <asp:Panel ID="panLista" runat="server">
@@ -33,7 +33,7 @@
     <AlternatingRowStyle CssClass="gridview_alter"></AlternatingRowStyle>
     <PagerStyle CssClass="gridview_pager"></PagerStyle>
     <Columns>
-        <asp:BoundField ReadOnly="True" DataField="CodigoSede" HeaderText="ID" ItemStyle-Width="50px"></asp:BoundField>
+        <asp:BoundField ReadOnly="True" DataField="CodigoArea" HeaderText="ID" ItemStyle-Width="50px"></asp:BoundField>
         <asp:BoundField ReadOnly="True" DataField="Nombre" HeaderText="Descripción" ItemStyle-Width="500px"></asp:BoundField>
         <asp:CheckBoxField DataField="EstadoBool" HeaderText="Estado"   />
         <asp:TemplateField ShowHeader="False">

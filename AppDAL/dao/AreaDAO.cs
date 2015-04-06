@@ -10,11 +10,37 @@ namespace pe.com.sil.dal.dao
 {
     public class AreaDAO
     {
-
+        const string C_BUSCAR_POR_CLAVE = "SELECT CodigoArea, Nombre, estado " +
+                                "FROM Area " +
+                                "WHERE CodigoArea = @CodigoArea";
         const string C_LISTAR = "USP_Area_Listar";
         const string C_ACTUALIZAR = "USP_Area_Actualizar";
         const string C_AGREGAR = "USP_Area_Agregar";
         const string C_ELIMINAR = "USP_Area_Eliminar";
+
+        public AreaDTO ListarPorClave(int id)
+        {
+            AreaDTO obj = new AreaDTO();
+            Database db = DatabaseFactory.CreateDatabase("ApplicationConnectionString");
+            DbCommand dbCommand = db.GetSqlStringCommand(C_BUSCAR_POR_CLAVE);
+            db.AddInParameter(dbCommand, "@CodigoArea", DbType.Int32, id);
+
+            using (IDataReader dr = db.ExecuteReader(dbCommand))
+            {
+                if (dr.Read())
+                {
+                    obj.CodigoArea = (int)dr["CodigoArea"];
+
+                    if (dr["Nombre"] != System.DBNull.Value)
+                        obj.Nombre = (string)dr["Nombre"];
+
+                    if (dr["Estado"] != System.DBNull.Value)
+                        obj.Estado = (string)dr["Estado"];
+
+                }
+            }
+            return obj;
+        }
 
         public List<AreaDTO> Listar()
         {

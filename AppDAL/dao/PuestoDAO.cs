@@ -10,12 +10,36 @@ namespace pe.com.sil.dal.dao
 {
     public class PuestoDAO
     {
-
+        const string C_BUSCAR_POR_CLAVE = "SELECT CodigoPuesto, Nombre, estado " +
+                                "FROM Puesto " +
+                                "WHERE CodigoPuesto = @CodigoPuesto";
         const string C_LISTAR = "USP_Puesto_Listar";
         const string C_ACTUALIZAR = "USP_Puesto_Actualizar";
         const string C_AGREGAR = "USP_Puesto_Agregar";
         const string C_ELIMINAR = "USP_Puesto_Eliminar";
+        public PuestoDTO ListarPorClave(int id)
+        {
+            PuestoDTO obj = new PuestoDTO();
+            Database db = DatabaseFactory.CreateDatabase("ApplicationConnectionString");
+            DbCommand dbCommand = db.GetSqlStringCommand(C_BUSCAR_POR_CLAVE);
+            db.AddInParameter(dbCommand, "@CodigoPuesto", DbType.Int32, id);
 
+            using (IDataReader dr = db.ExecuteReader(dbCommand))
+            {
+                if (dr.Read())
+                {
+                    obj.CodigoPuesto = (int)dr["CodigoPuesto"];
+
+                    if (dr["Nombre"] != System.DBNull.Value)
+                        obj.Nombre = (string)dr["Nombre"];
+
+                    if (dr["Estado"] != System.DBNull.Value)
+                        obj.Estado = (string)dr["Estado"];
+
+                }
+            }
+            return obj;
+        }
         public List<PuestoDTO> Listar()
         {
             List<PuestoDTO> Lista = new List<PuestoDTO>();

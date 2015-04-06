@@ -10,11 +10,36 @@ namespace pe.com.sil.dal.dao
 {
     public class JefeDAO
     {
-
+        const string C_BUSCAR_POR_CLAVE = "SELECT CodigoJefe, Nombre, estado " +
+                                "FROM Jefe " +
+                                "WHERE CodigoJefe = @CodigoJefe";
         const string C_LISTAR = "USP_Jefe_Listar";
         const string C_ACTUALIZAR = "USP_Jefe_Actualizar";
         const string C_AGREGAR = "USP_Jefe_Agregar";
         const string C_ELIMINAR = "USP_Jefe_Eliminar";
+        public JefeDTO ListarPorClave(int id)
+        {
+            JefeDTO obj = new JefeDTO();
+            Database db = DatabaseFactory.CreateDatabase("ApplicationConnectionString");
+            DbCommand dbCommand = db.GetSqlStringCommand(C_BUSCAR_POR_CLAVE);
+            db.AddInParameter(dbCommand, "@CodigoJefe", DbType.Int32, id);
+
+            using (IDataReader dr = db.ExecuteReader(dbCommand))
+            {
+                if (dr.Read())
+                {
+                    obj.CodigoJefe = (int)dr["CodigoJefe"];
+
+                    if (dr["Nombre"] != System.DBNull.Value)
+                        obj.Nombre = (string)dr["Nombre"];
+
+                    if (dr["Estado"] != System.DBNull.Value)
+                        obj.Estado = (string)dr["Estado"];
+
+                }
+            }
+            return obj;
+        }
 
         public List<JefeDTO> Listar()
         {

@@ -40,5 +40,16 @@ namespace pe.com.sil.dal.dto
           get { return _Estado; }
           set { _Estado = value; }
       }
+
+      public Boolean EstadoBool
+      {
+          get
+          {
+              if (_Estado == "1")
+                  return true;
+              else
+                  return false;
+          }
+      }
   }
 }

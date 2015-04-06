@@ -15,9 +15,9 @@ using pe.com.seg.dal.dao;
 
 namespace AppWeb
 {
-    public partial class frmMantSede : System.Web.UI.Page
+    public partial class frmMantPuesto : System.Web.UI.Page
     {
-        SedeDAO objSedeDAO = new SedeDAO();
+        PuestoDAO objPuestoDAO = new PuestoDAO();
         UsuarioDAO objUsuarioDAO = new UsuarioDAO();
         TablaDAO objTablaDAO = new TablaDAO();
 
@@ -50,10 +50,10 @@ namespace AppWeb
 
         protected void Listar()
         {
-            List<SedeDTO> obj;
+            List<PuestoDTO> obj;
             try
             {
-                obj = objSedeDAO.Listar();
+                obj = objPuestoDAO.Listar();
                 this.gvLista.DataSource = obj;
                 this.gvLista.DataBind();
             }
@@ -87,13 +87,13 @@ namespace AppWeb
         //{
         //    if (e.CommandName == "Seleccionar")
         //    {
-        //        SedeDTO obj;
+        //        PuestoDTO obj;
         //        try
         //        {
-        //            int CodigoSede = int.Parse(e.CommandArgument.ToString());
+        //            int CodigoPuesto = int.Parse(e.CommandArgument.ToString());
 
-        //            this.txtId.Text = CodigoSede.ToString();
-        //            obj = objSedeDAO.ListarPorClave(Convert.ToInt32(this.txtId.Text));
+        //            this.txtId.Text = CodigoPuesto.ToString();
+        //            obj = objPuestoDAO.ListarPorClave(Convert.ToInt32(this.txtId.Text));
 
         //            this.txtDescripcion.Text = obj.Nombre;
 
@@ -127,11 +127,11 @@ namespace AppWeb
         protected void gvLista_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            SedeDTO obj;
+            PuestoDTO obj;
             try
             {
                 this.txtId.Text = gvLista.SelectedRow.Cells[0].Text;
-                obj = objSedeDAO.ListarPorClave(Convert.ToInt32(this.txtId.Text));
+                obj = objPuestoDAO.ListarPorClave(Convert.ToInt32(this.txtId.Text));
 
                 this.txtDescripcion.Text = obj.Nombre;
                 if (obj.Estado == "1")
@@ -157,7 +157,7 @@ namespace AppWeb
 
         protected void btnGrabar_Click(object sender, EventArgs e)
         {
-            SedeDTO obj = new SedeDTO();
+            PuestoDTO obj = new PuestoDTO();
 
             obj.Nombre = txtDescripcion.Text;
 
@@ -166,7 +166,7 @@ namespace AppWeb
             else
                 obj.Estado = "0";
 
-            int id = objSedeDAO.Agregar(obj);
+            int id = objPuestoDAO.Agregar(obj);
 
             this.txtId.Text = id.ToString();
 
@@ -179,9 +179,9 @@ namespace AppWeb
 
         protected void btnActualizar_Click(object sender, EventArgs e)
         {
-            SedeDTO obj = new SedeDTO();
+            PuestoDTO obj = new PuestoDTO();
 
-            obj = objSedeDAO.ListarPorClave(Convert.ToInt32(this.txtId.Text));
+            obj = objPuestoDAO.ListarPorClave(Convert.ToInt32(this.txtId.Text));
 
             obj.Nombre = txtDescripcion.Text;
             if (this.chkEstado.Checked)
@@ -189,18 +189,18 @@ namespace AppWeb
             else
                 obj.Estado = "0";
 
-            objSedeDAO.Actualizar(obj);
+            objPuestoDAO.Actualizar(obj);
 
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            SedeDTO obj = new SedeDTO();
+            PuestoDTO obj = new PuestoDTO();
 
             if (this.txtId.Text != "")
             {
                 
-                objSedeDAO.Eliminar(this.txtId.Text);
+                objPuestoDAO.Eliminar(this.txtId.Text);
 
                 Limpiar();
             }
