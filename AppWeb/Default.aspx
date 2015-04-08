@@ -25,27 +25,50 @@
 
 <td valign="top" width="*">
 
-<div class="cssTablaCabeceraRegistro">::Alertas::</div>
+<div class="cssTablaCabeceraRegistro">::Evaluaciones::</div>
 <div class="cssTablaRegistro">
 
-<%--<asp:gridview id="gvLista" 
-        runat="server" 
+<asp:Panel ID="panLista" runat="server">
+ <%--   Buscar:<asp:TextBox ID="txtBusqueda" runat="server" Width="400px"></asp:TextBox>
+    <asp:Button ID="btnBuscar" CssClass="cssButton" runat="server" Text="Buscar" onclick="btnBuscar_Click" />
+    <asp:Button ID="btnNuevo" runat="server" Text="Nuevo" CssClass="cssButton" onclick="btnNuevo_Click" />
+--%>    
+    <asp:gridview id="gvLista" runat="server" 
         autogeneratecolumns="False"
+        OnRowCommand="gvLista_RowCommand"  
         CssClass="gridview"
         PagerStyle-CssClass="gridview_pager" 
         AlternatingRowStyle-CssClass="gridview_alter"
->
-     <AlternatingRowStyle CssClass="gridview_alter"></AlternatingRowStyle>
+        PageSize="20" 
+        AllowPaging="true" 
+        OnPageIndexChanging="gvLista_PageIndexChanging"
+    >
+    <AlternatingRowStyle CssClass="gridview_alter"></AlternatingRowStyle>
+    <PagerStyle CssClass="gridview_pager"></PagerStyle>
     <Columns>
-        <asp:BoundField ReadOnly="True" DataField="FECHA_EVENTO" HeaderText="Fecha" ItemStyle-Width="80px" dataformatstring="{0:dd/MM/yyyy}" ></asp:BoundField>
-        <asp:BoundField ReadOnly="True" DataField="NOMBRE_PROYECTO" HeaderText="Proyecto" ItemStyle-Width="200px"></asp:BoundField>
-        <asp:BoundField ReadOnly="True" DataField="DE_LOGIN_USUARIO" HeaderText="De" ItemStyle-Width="80px"></asp:BoundField>
-        <asp:BoundField ReadOnly="True" DataField="PARA_LOGIN_USUARIO" HeaderText="Para" ItemStyle-Width="80px"></asp:BoundField>
-        <asp:BoundField ReadOnly="True" DataField="ASUNTO" HeaderText="Asunto" ItemStyle-Width="350px"></asp:BoundField>
-        <asp:BoundField ReadOnly="True" DataField="PROCESO" HeaderText="Proceso" ItemStyle-Width="150px"></asp:BoundField>
-
+<%--        <asp:BoundField ReadOnly="True" DataField="IdEmpleado" HeaderText="ID" ItemStyle-Width="50px"></asp:BoundField>
+--%>        <asp:BoundField ReadOnly="True" DataField="CodigoEmpleado" HeaderText="Código" ItemStyle-Width="100px"></asp:BoundField>
+        <asp:BoundField ReadOnly="True" DataField="Nombre" HeaderText="Nombre" ItemStyle-Width="500px"></asp:BoundField>
+        <asp:BoundField ReadOnly="True" DataField="Puesto" HeaderText="Puesto" ItemStyle-Width="200px"></asp:BoundField>
+        <asp:BoundField ReadOnly="True" DataField="Grado" HeaderText="Grado" ItemStyle-Width="120px"></asp:BoundField>
+        <asp:BoundField ReadOnly="True" DataField="Unidad" HeaderText="Unidad" ItemStyle-Width="120px"></asp:BoundField>
+        <asp:BoundField ReadOnly="True" DataField="Sede" HeaderText="Sede" ItemStyle-Width="120px"></asp:BoundField>
+        <asp:BoundField ReadOnly="True" DataField="FechaIngreso" HeaderText="Fecha Ingreso" ItemStyle-Width="100px"></asp:BoundField>
+<%--        <asp:CheckBoxField DataField="EstadoBool" HeaderText="Estado"   />--%>
+        <asp:TemplateField ShowHeader="False">
+            <ItemTemplate>
+                <asp:Button ID="btnVerEmpleado" runat="server" Text="Evaluar" 
+                    CommandName="Seleccionar" 
+                    CausesValidation="False" 
+                    CommandArgument = '<%# Bind("IdEmpleado") %>'
+                    CssClass="cssButton" />
+            </ItemTemplate>
+        </asp:TemplateField>
     </Columns>
-    </asp:gridview>--%>
+    <PagerStyle CssClass="gridview_pager"></PagerStyle>
+    </asp:gridview>
+</asp:Panel>
+
 
     
   

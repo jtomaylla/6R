@@ -116,26 +116,25 @@ namespace pe.com.sil.dal.dao
                       obj.CodigoSede = (int)dr["CodigoSede"];
                   if (dr["Estado"] != System.DBNull.Value)
                       obj.Estado = (string)dr["Estado"];
-                  //if (dr["fecha_creacion"] != System.DBNull.Value)
-                  //    obj.Fecha_creacion = (DateTime)dr["fecha_creacion"];
-                  //if (dr["usuario_creacion"] != System.DBNull.Value)
-                  //    obj.Usuario_creacion = (int)dr["usuario_creacion"];
-                  //if (dr["fecha_modificacion"] != System.DBNull.Value)
-                  //    obj.Fecha_modificacion = (DateTime)dr["fecha_modificacion"];
-                  //if (dr["usuario_modificacion"] != System.DBNull.Value)
-                  //    obj.Usuario_modificacion = (int)dr["usuario_modificacion"];
+                  if (dr["Puesto"] != System.DBNull.Value)
+                      obj.Puesto = (string)dr["Puesto"];
+                  if (dr["Grado"] != System.DBNull.Value)
+                      obj.Grado = (string)dr["Grado"];
+                  if (dr["Unidad"] != System.DBNull.Value)
+                      obj.Unidad = (string)dr["Unidad"];
+                  if (dr["Sede"] != System.DBNull.Value)
+                      obj.Sede = (string)dr["Sede"];
 
               }
           }
           return obj;
       }
 
-      public List<EmpleadoDTO> ListarBusquedaPorJefe(string Nombre, int CodigoJefe)
+      public List<EmpleadoDTO> ListarBusquedaPorJefe(int CodigoJefe)
       {
           List<EmpleadoDTO> Lista = new List<EmpleadoDTO>();
           Database db = DatabaseFactory.CreateDatabase("ApplicationConnectionString");
           DbCommand dbCommand = db.GetStoredProcCommand(C_LISTAR_BUSQUEDA_POR_JEFE);
-          db.AddInParameter(dbCommand, "@Nombre", DbType.String, Nombre);
           db.AddInParameter(dbCommand, "@CodigoJefe", DbType.Int32, CodigoJefe);
 
           using (IDataReader dr = db.ExecuteReader(dbCommand))
@@ -172,14 +171,14 @@ namespace pe.com.sil.dal.dao
                       obj.CodigoSede = (int)dr["CodigoSede"];
                   if (dr["Estado"] != System.DBNull.Value)
                       obj.Estado = (string)dr["Estado"];
-                  //if (dr["fecha_creacion"] != System.DBNull.Value)
-                  //    obj.Fecha_creacion = (DateTime)dr["fecha_creacion"];
-                  //if (dr["usuario_creacion"] != System.DBNull.Value)
-                  //    obj.Usuario_creacion = (int)dr["usuario_creacion"];
-                  //if (dr["fecha_modificacion"] != System.DBNull.Value)
-                  //    obj.Fecha_modificacion = (DateTime)dr["fecha_modificacion"];
-                  //if (dr["usuario_modificacion"] != System.DBNull.Value)
-                  //    obj.Usuario_modificacion = (int)dr["usuario_modificacion"];
+                  if (dr["Puesto"] != System.DBNull.Value)
+                      obj.Puesto = (string)dr["Puesto"];
+                  if (dr["Grado"] != System.DBNull.Value)
+                      obj.Grado = (string)dr["Grado"];
+                  if (dr["Unidad"] != System.DBNull.Value)
+                      obj.Unidad = (string)dr["Unidad"];
+                  if (dr["Sede"] != System.DBNull.Value)
+                      obj.Sede = (string)dr["Sede"];
 
 
                   Lista.Add(obj);
@@ -228,14 +227,14 @@ namespace pe.com.sil.dal.dao
                       obj.CodigoSede = (int)dr["CodigoSede"];
                   if (dr["Estado"] != System.DBNull.Value)
                       obj.Estado = (string)dr["Estado"];
-                  //if (dr["fecha_creacion"] != System.DBNull.Value)
-                  //    obj.Fecha_creacion = (DateTime)dr["fecha_creacion"];
-                  //if (dr["usuario_creacion"] != System.DBNull.Value)
-                  //    obj.Usuario_creacion = (int)dr["usuario_creacion"];
-                  //if (dr["fecha_modificacion"] != System.DBNull.Value)
-                  //    obj.Fecha_modificacion = (DateTime)dr["fecha_modificacion"];
-                  //if (dr["Usuario_modificacion"] != System.DBNull.Value)
-                  //    obj.Usuario_modificacion = (int)dr["usuario_modificacion"];
+                  if (dr["Puesto"] != System.DBNull.Value)
+                      obj.Puesto = (string)dr["Puesto"];
+                  if (dr["Grado"] != System.DBNull.Value)
+                      obj.Grado = (string)dr["Grado"];
+                  if (dr["Unidad"] != System.DBNull.Value)
+                      obj.Unidad = (string)dr["Unidad"];
+                  if (dr["Sede"] != System.DBNull.Value)
+                      obj.Sede = (string)dr["Sede"];
 
                   
                   Lista.Add(obj);

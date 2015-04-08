@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using pe.com.seg.dal.dto;
 using pe.com.seg.dal.dao;
 using pe.com.sil.dal.dao;
+using pe.com.sil.dal.dto;
 using System.Data;
 
 namespace AppWeb
@@ -16,7 +17,8 @@ namespace AppWeb
         UsuarioDAO objUsuarioDAO = new UsuarioDAO();
         UsuarioPerfilDAO objUsuarioPerfilDAO = new UsuarioPerfilDAO();
         //AlertaDAO objAlertaDAO = new AlertaDAO();
-
+        EmpleadoDAO objEmpleadoDAO = new EmpleadoDAO();
+        List<EmpleadoDTO> obj;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack) {
@@ -110,12 +112,27 @@ namespace AppWeb
             string LoginUsuario = HttpContext.Current.User.Identity.Name;
             UsuarioDTO objUsuario = objUsuarioDAO.ListarPorLogin(LoginUsuario);
 
-            //DataTable dt = objAlertaDAO.ListarPorUsuario(objUsuario.IdUsuario);
+            List<EmpleadoDTO> obj = objEmpleadoDAO.ListarBusquedaPorJefe(objUsuario.IdUsuario);
+            this.gvLista.DataSource = obj;
+            this.gvLista.DataBind();
 
-            //this.gvLista.DataSource = dt;
-            //this.gvLista.DataBind();
+        }
+        protected void gvLista_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Seleccionar")
+            {
+                    int IdEmpleado = int.Parse(e.CommandArgument.ToString());
+                    string strLink = "http://70.38.64.52/WSData/WFEncuestaNew.aspx?IdFormato=5a336346-8f8f-4310-bc6a-9a9647c62b90&CodigoProyecto=14&IdFormatoNemotecnico=RR.HH._%20FORM_41&CodigoIdioma=01&CodigoLocal=1&codigo=IdTest&CodigoGrupoVisita=0&CodigoVisita=0&Visita=Test&Test=1&vCodigoUsuario=00000&vOrganizacion=1&&vRol=2";
+                    this.panLista.Visible = false;
 
+                Response.Redirect(strLink);
+             }
+        }
 
+        protected void gvLista_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            this.gvLista.PageIndex = e.NewPageIndex;
+            Lista();
         }
     }
 }

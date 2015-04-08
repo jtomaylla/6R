@@ -351,6 +351,32 @@ namespace pe.com.rbtec.web
             return strValue;
         }
 
+        public static string EditURL(string FieldID, string FieldValue, string PageName)
+        {
+            string link = PageName + "?" + FieldID + "=" + FieldValue;
+            return link;
+        }
+        public static string EditURL2(string FieldID1, string FieldValue1, string FieldID2, string FieldValue2, string PageName)
+        {
+            string link = PageName + "?" + FieldID1 + "=" + FieldValue1 + "&" + FieldID2 + "=" + FieldValue2;
+            return link;
+        }
+        public static string EditURL3(string FieldID1, string FieldValue1, string FieldID2, string FieldValue2, string FieldID3, string FieldValue3, string PageName)
+        {
+            string link = PageName + "?" + FieldID1 + "=" + FieldValue1 + "&" + FieldID2 + "=" + FieldValue2 + "&" + FieldID3 + "=" + FieldValue3;
+            return link;
+        }
+        public static string EditURL4(string FieldID1, string FieldValue1, string FieldID2, string FieldValue2, string FieldID3, string FieldValue3, string FieldID4, string FieldValue4, string PageName)
+        {
+            string link = PageName + "?" + FieldID1 + "=" + FieldValue1 + "&" + FieldID2 + "=" + FieldValue2 + "&" + FieldID3 + "=" + FieldValue3 + "&" + FieldID4 + "=" + FieldValue4;
+            return link;
+        }
+        public static string NavigateURL()
+        {
+            string link = "~/Default.aspx";
+            return link;
+        }
+
         public static void CreateCSVFile(DataTable dt, string strFilePath, bool bCabecera)
         {
             #region Export Grid to CSV
@@ -399,6 +425,8 @@ namespace pe.com.rbtec.web
             #endregion
         }
 
+
+        
     }
 
 }
