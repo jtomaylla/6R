@@ -89,7 +89,7 @@ namespace pe.com.sil.dal.dao
                   obj = new EmpleadoDTO();
 
                   if (dr["IdEmpleado"] != System.DBNull.Value)
-                       obj.IdEmpleado = (int)dr["IdEmpleado"];
+                      obj.IdEmpleado = (int)dr["IdEmpleado"];
                   if (dr["CodigoEmpleado"] != System.DBNull.Value)
                       obj.CodigoEmpleado = (string)dr["CodigoEmpleado"];
                   if (dr["DocumentoIdentidad"] != System.DBNull.Value)
@@ -124,7 +124,14 @@ namespace pe.com.sil.dal.dao
                       obj.Unidad = (string)dr["Unidad"];
                   if (dr["Sede"] != System.DBNull.Value)
                       obj.Sede = (string)dr["Sede"];
-
+                  if (dr["IdFormato"] != System.DBNull.Value)
+                      {
+                          obj.IdFormato = (string)dr["IdFormato"];
+                      }
+                      else
+                      {
+                          obj.IdFormato = "";
+                      };
               }
           }
           return obj;
@@ -235,7 +242,6 @@ namespace pe.com.sil.dal.dao
                       obj.Unidad = (string)dr["Unidad"];
                   if (dr["Sede"] != System.DBNull.Value)
                       obj.Sede = (string)dr["Sede"];
-
                   
                   Lista.Add(obj);
               }

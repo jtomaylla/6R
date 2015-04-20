@@ -61,6 +61,11 @@
             <td><asp:TextBox ID="txtDescripcion" runat="server" Width="600px" MaxLength="150"></asp:TextBox></td>
         </tr>
         <tr>
+            <td>Cuenta Acceso de Evaluador</td>
+            <td>:</td>
+            <td><asp:DropDownList ID="ddlUsuario" runat="server"></asp:DropDownList></td>
+        </tr>
+        <tr>
             <td>Estado <span class="cssError">(*)</span></td>
             <td>:</td>
             <td><asp:CheckBox ID="chkEstado" runat="server" /> Activo</td>

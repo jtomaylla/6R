@@ -15,7 +15,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<div class="cssTituloPagina">
+    <div class="cssTituloPagina">
     <p>
         Mantenimiento de Puesto</p>
     </div>
@@ -59,6 +59,11 @@
             <td>Descripción <span class="cssError">(*)</span></td>
             <td>:</td>
             <td><asp:TextBox ID="txtDescripcion" runat="server" Width="600px" MaxLength="150"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td>ID Formato Asociado</td>
+            <td>:</td>
+            <td><asp:DropDownList ID="ddlFormato" runat="server" Width="400px"></asp:DropDownList></td>
         </tr>
         <tr>
             <td>Estado <span class="cssError">(*)</span></td>

@@ -5,7 +5,6 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <p>
-        Sistema de Logistica - Logis NET
-
+        6R - Recursos Humanos
     </p>
 </asp:Content>

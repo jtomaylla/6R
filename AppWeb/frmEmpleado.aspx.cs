@@ -34,7 +34,7 @@ namespace AppWeb
             this.btnEliminar.Attributes.Add("onclick", "return confirm('" + AppConstantes.MSG_ELIMINAR_REGISTRO + "')");
             this.btnGrabar.Attributes.Add("onclick", "return js_validar();");
             this.btnActualizar.Attributes.Add("onclick", "return js_validar();");
-
+            this.lblMensaje.Text = "";
             if (!Page.IsPostBack)
             {
                 InicializaPagina();

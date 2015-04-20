@@ -10,7 +10,7 @@ namespace pe.com.sil.dal.dao
 {
     public class JefeDAO
     {
-        const string C_BUSCAR_POR_CLAVE = "SELECT CodigoJefe, Nombre, estado " +
+        const string C_BUSCAR_POR_CLAVE = "SELECT CodigoJefe, Nombre, estado, id_usuario " +
                                 "FROM Jefe " +
                                 "WHERE CodigoJefe = @CodigoJefe";
         const string C_LISTAR = "USP_Jefe_Listar";
@@ -36,6 +36,9 @@ namespace pe.com.sil.dal.dao
                     if (dr["Estado"] != System.DBNull.Value)
                         obj.Estado = (string)dr["Estado"];
 
+                    if (dr["id_usuario"] != System.DBNull.Value)
+                        obj.Id_usuario = (int)dr["id_usuario"];
+
                 }
             }
             return obj;
@@ -57,6 +60,8 @@ namespace pe.com.sil.dal.dao
                         obj.Nombre = (string)dr["Nombre"];
                     if (dr["Estado"] != System.DBNull.Value)
                         obj.Estado = (string)dr["Estado"];
+                    if (dr["id_usuario"] != System.DBNull.Value)
+                        obj.Id_usuario = (int)dr["id_usuario"]; 
                     Lista.Add(obj);
                 }
             }
@@ -69,6 +74,7 @@ namespace pe.com.sil.dal.dao
             DbCommand dbCommand = db.GetStoredProcCommand(C_AGREGAR);
             db.AddInParameter(dbCommand, "@Nombre", DbType.String, obj.Nombre);
             db.AddInParameter(dbCommand, "@Estado", DbType.String, obj.Estado);
+            db.AddInParameter(dbCommand, "@id_usuario", DbType.Int32, obj.Id_usuario);
             int id = Convert.ToInt32(db.ExecuteScalar(dbCommand));
             return id;
         }
@@ -80,6 +86,8 @@ namespace pe.com.sil.dal.dao
             db.AddInParameter(dbCommand, "@CodigoJefe", DbType.Int32, obj.CodigoJefe);
             db.AddInParameter(dbCommand, "@Nombre", DbType.String, obj.Nombre);
             db.AddInParameter(dbCommand, "@Estado", DbType.String, obj.Estado);
+            db.AddInParameter(dbCommand, "@id_usuario", DbType.Int32, obj.Id_usuario);
+
             db.ExecuteNonQuery(dbCommand);
         }
 

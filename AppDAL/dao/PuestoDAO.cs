@@ -10,7 +10,7 @@ namespace pe.com.sil.dal.dao
 {
     public class PuestoDAO
     {
-        const string C_BUSCAR_POR_CLAVE = "SELECT CodigoPuesto, Nombre, estado " +
+        const string C_BUSCAR_POR_CLAVE = "SELECT CodigoPuesto, Nombre, Estado, IdFormato " +
                                 "FROM Puesto " +
                                 "WHERE CodigoPuesto = @CodigoPuesto";
         const string C_LISTAR = "USP_Puesto_Listar";
@@ -36,6 +36,12 @@ namespace pe.com.sil.dal.dao
                     if (dr["Estado"] != System.DBNull.Value)
                         obj.Estado = (string)dr["Estado"];
 
+                    if (dr["IdFormato"] != System.DBNull.Value)
+                    {
+                        obj.IdFormato = (string)dr["IdFormato"];
+                    }else{
+                        obj.IdFormato = "";
+                    }
                 }
             }
             return obj;
@@ -68,6 +74,7 @@ namespace pe.com.sil.dal.dao
             DbCommand dbCommand = db.GetStoredProcCommand(C_AGREGAR);
             db.AddInParameter(dbCommand, "@Nombre", DbType.String, obj.Nombre);
             db.AddInParameter(dbCommand, "@Estado", DbType.String, obj.Estado);
+            db.AddInParameter(dbCommand, "@IdFormato", DbType.String, obj.IdFormato);
             int id = Convert.ToInt32(db.ExecuteScalar(dbCommand));
             return id;
         }
@@ -79,6 +86,7 @@ namespace pe.com.sil.dal.dao
             db.AddInParameter(dbCommand, "@CodigoPuesto", DbType.Int32, obj.CodigoPuesto);
             db.AddInParameter(dbCommand, "@Nombre", DbType.String, obj.Nombre);
             db.AddInParameter(dbCommand, "@Estado", DbType.String, obj.Estado);
+            db.AddInParameter(dbCommand, "@IdFormato", DbType.String, obj.IdFormato);
             db.ExecuteNonQuery(dbCommand);
         }
 

@@ -12,16 +12,18 @@ namespace pe.com.sil.dal.dto
       private int _CodigoPuesto;
       private string _Nombre;
       private string _Estado;
+      private string _IdFormato;
 
       //Constructor
 
       public PuestoDTO() { }
 
-      public PuestoDTO(int _CodigoPuesto, string _Nombre, string _Estado)
+      public PuestoDTO(int _CodigoPuesto, string _Nombre, string _Estado, string _IdFormato)
       {
           this._CodigoPuesto = _CodigoPuesto;
           this._Nombre = _Nombre;
           this._Estado = _Estado;
+          this._IdFormato = _IdFormato;
       }
 
       //Get y Set
@@ -50,6 +52,12 @@ namespace pe.com.sil.dal.dto
               else
                   return false;
           }
+      }
+
+      public string IdFormato
+      {
+          get { return _IdFormato; }
+          set { _IdFormato = value; }
       }
   }
 }

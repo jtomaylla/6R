@@ -6,7 +6,7 @@
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
 
 
-<div class="cssTituloPagina">Menu Principal</div>
+<div class="cssTituloPagina">Evaluación del Desempeño</div>
 
 <table width="100%">
 <tr>
@@ -32,7 +32,8 @@
  <%--   Buscar:<asp:TextBox ID="txtBusqueda" runat="server" Width="400px"></asp:TextBox>
     <asp:Button ID="btnBuscar" CssClass="cssButton" runat="server" Text="Buscar" onclick="btnBuscar_Click" />
     <asp:Button ID="btnNuevo" runat="server" Text="Nuevo" CssClass="cssButton" onclick="btnNuevo_Click" />
---%>    
+--%>
+    <asp:Label ID="lblMensaje" runat="server" Text="" CssClass="cssMensaje"></asp:Label>    
     <asp:gridview id="gvLista" runat="server" 
         autogeneratecolumns="False"
         OnRowCommand="gvLista_RowCommand"  

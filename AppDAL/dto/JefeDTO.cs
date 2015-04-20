@@ -12,16 +12,19 @@ namespace pe.com.sil.dal.dto
       private int _CodigoJefe;
       private string _Nombre;
       private string _Estado;
+      private int _id_usuario;
 
       //Constructor
 
       public JefeDTO() { }
 
-      public JefeDTO(int _CodigoJefe, string _Nombre, string _Estado)
+      public JefeDTO(int _CodigoJefe, string _Nombre, string _Estado,
+           int _id_usuario)
       {
           this._CodigoJefe = _CodigoJefe;
           this._Nombre = _Nombre;
           this._Estado = _Estado;
+          this._id_usuario = _id_usuario;
       }
 
       //Get y Set
@@ -51,5 +54,12 @@ namespace pe.com.sil.dal.dto
                   return false;
           }
       }
+
+      public int Id_usuario
+      {
+          get { return _id_usuario; }
+          set { _id_usuario = value; }
+      }
+
   }
 }

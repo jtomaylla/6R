@@ -20,13 +20,14 @@ namespace AppWeb
         PuestoDAO objPuestoDAO = new PuestoDAO();
         UsuarioDAO objUsuarioDAO = new UsuarioDAO();
         TablaDAO objTablaDAO = new TablaDAO();
+        FormatoDAO objFormatoDAO = new FormatoDAO();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             this.btnEliminar.Attributes.Add("onclick", "return confirm('" + AppConstantes.MSG_ELIMINAR_REGISTRO + "')");
             this.btnGrabar.Attributes.Add("onclick", "return js_validar();");
             this.btnActualizar.Attributes.Add("onclick", "return js_validar();");
-
+            this.lblMensaje.Text = "";
             if (!Page.IsPostBack)
             {
                 InicializaPagina();
@@ -46,6 +47,13 @@ namespace AppWeb
             this.txtId.BackColor = System.Drawing.ColorTranslator.FromHtml(AppConstantes.TXT_BACKCOLOR_INACTIVO);
             this.panRegistro.Visible = false;
             this.panLista.Visible = true;
+
+            List<FormatoDTO> objFormatoLista = objFormatoDAO.ListarPorProyecto(14);
+            this.ddlFormato.DataSource = objFormatoLista;
+            this.ddlFormato.DataTextField = "Titulo";
+            this.ddlFormato.DataValueField = "IdFormato";
+            this.ddlFormato.DataBind();
+            this.ddlFormato.Items.Insert(0, new ListItem("- Seleccione -", "0"));
         }
 
         protected void Listar()
@@ -83,47 +91,6 @@ namespace AppWeb
             this.btnCancelar.Visible = true;
         }
 
-        //protected void gvLista_RowCommand(object sender, GridViewCommandEventArgs e)
-        //{
-        //    if (e.CommandName == "Seleccionar")
-        //    {
-        //        PuestoDTO obj;
-        //        try
-        //        {
-        //            int CodigoPuesto = int.Parse(e.CommandArgument.ToString());
-
-        //            this.txtId.Text = CodigoPuesto.ToString();
-        //            obj = objPuestoDAO.ListarPorClave(Convert.ToInt32(this.txtId.Text));
-
-        //            this.txtDescripcion.Text = obj.Nombre;
-
-
-        //            if (obj.Estado == "1")
-        //                this.chkEstado.Checked = true;
-        //            else
-        //                this.chkEstado.Checked = false;
-
-        //            this.panRegistro.Visible = true;
-        //            this.panLista.Visible = false;
-
-        //            this.btnGrabar.Visible = false;
-        //            this.btnActualizar.Visible = true;
-        //            this.btnEliminar.Visible = true;
-        //            this.btnCancelar.Visible = true;
-        //        }
-        //        catch (Exception err)
-        //        {
-        //            this.lblMensaje.Text = err.Message.ToString();
-        //        }
-        //    }
-        //}
-
-        //protected void gvLista_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        //{
-        //    this.gvLista.PageIndex = e.NewPageIndex;
-        //    Listar();
-        //}
-
         protected void gvLista_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -138,6 +105,14 @@ namespace AppWeb
                     this.chkEstado.Checked = true;
                 else
                     this.chkEstado.Checked = false;
+
+                List<FormatoDTO> objFormatoLista = objFormatoDAO.ListarPorProyecto(14);
+                this.ddlFormato.DataSource = objFormatoLista;
+                this.ddlFormato.DataTextField = "Titulo";
+                this.ddlFormato.DataValueField = "IdFormato";
+                this.ddlFormato.DataBind();
+                this.ddlFormato.Items.Insert(0, new ListItem("- Seleccione -", ""));
+                ddlFormato.SelectedValue = obj.IdFormato;
 
                 this.panRegistro.Visible = true;
                 this.panLista.Visible = false;
@@ -166,6 +141,8 @@ namespace AppWeb
             else
                 obj.Estado = "0";
 
+            obj.IdFormato = ddlFormato.SelectedValue;
+
             int id = objPuestoDAO.Agregar(obj);
 
             this.txtId.Text = id.ToString();
@@ -175,6 +152,7 @@ namespace AppWeb
             this.btnEliminar.Visible = true;
             this.panRegistro.Visible = true;
             this.panLista.Visible = false;
+            this.lblMensaje.Text = "Datos creados!!";
         }
 
         protected void btnActualizar_Click(object sender, EventArgs e)
@@ -189,8 +167,11 @@ namespace AppWeb
             else
                 obj.Estado = "0";
 
+            obj.IdFormato = ddlFormato.SelectedValue;
+
             objPuestoDAO.Actualizar(obj);
 
+            this.lblMensaje.Text = "Datos guardados!!";
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)

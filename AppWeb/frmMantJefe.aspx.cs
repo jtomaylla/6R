@@ -46,6 +46,13 @@ namespace AppWeb
             this.txtId.BackColor = System.Drawing.ColorTranslator.FromHtml(AppConstantes.TXT_BACKCOLOR_INACTIVO);
             this.panRegistro.Visible = false;
             this.panLista.Visible = true;
+
+            List<UsuarioDTO> objUsuarioLista = objUsuarioDAO.Listar();
+            this.ddlUsuario.DataSource = objUsuarioLista;
+            this.ddlUsuario.DataTextField = "LoginUsuario";
+            this.ddlUsuario.DataValueField = "IdUsuario";
+            this.ddlUsuario.DataBind();
+            this.ddlUsuario.Items.Insert(0, new ListItem("- Seleccione -", "0"));
         }
 
         protected void Listar()
@@ -83,47 +90,6 @@ namespace AppWeb
             this.btnCancelar.Visible = true;
         }
 
-        //protected void gvLista_RowCommand(object sender, GridViewCommandEventArgs e)
-        //{
-        //    if (e.CommandName == "Seleccionar")
-        //    {
-        //        JefeDTO obj;
-        //        try
-        //        {
-        //            int CodigoJefe = int.Parse(e.CommandArgument.ToString());
-
-        //            this.txtId.Text = CodigoJefe.ToString();
-        //            obj = objJefeDAO.ListarPorClave(Convert.ToInt32(this.txtId.Text));
-
-        //            this.txtDescripcion.Text = obj.Nombre;
-
-
-        //            if (obj.Estado == "1")
-        //                this.chkEstado.Checked = true;
-        //            else
-        //                this.chkEstado.Checked = false;
-
-        //            this.panRegistro.Visible = true;
-        //            this.panLista.Visible = false;
-
-        //            this.btnGrabar.Visible = false;
-        //            this.btnActualizar.Visible = true;
-        //            this.btnEliminar.Visible = true;
-        //            this.btnCancelar.Visible = true;
-        //        }
-        //        catch (Exception err)
-        //        {
-        //            this.lblMensaje.Text = err.Message.ToString();
-        //        }
-        //    }
-        //}
-
-        //protected void gvLista_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        //{
-        //    this.gvLista.PageIndex = e.NewPageIndex;
-        //    Listar();
-        //}
-
         protected void gvLista_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -138,6 +104,15 @@ namespace AppWeb
                     this.chkEstado.Checked = true;
                 else
                     this.chkEstado.Checked = false;
+
+                List<UsuarioDTO> objUsuarioLista = objUsuarioDAO.Listar();
+                this.ddlUsuario.DataSource = objUsuarioLista;
+                this.ddlUsuario.DataTextField = "LoginUsuario";
+                this.ddlUsuario.DataValueField = "IdUsuario";
+                this.ddlUsuario.DataBind();
+                this.ddlUsuario.Items.Insert(0, new ListItem("- Seleccione -", "0"));
+
+                ddlUsuario.SelectedValue = obj.Id_usuario.ToString();
 
                 this.panRegistro.Visible = true;
                 this.panLista.Visible = false;
@@ -166,9 +141,13 @@ namespace AppWeb
             else
                 obj.Estado = "0";
 
+            obj.Id_usuario = int.Parse(ddlUsuario.SelectedValue.ToString());
+
             int id = objJefeDAO.Agregar(obj);
 
             this.txtId.Text = id.ToString();
+
+
 
             this.btnNuevo.Visible = false;
             this.btnActualizar.Visible = true;
@@ -188,6 +167,8 @@ namespace AppWeb
                 obj.Estado = "1";
             else
                 obj.Estado = "0";
+
+            obj.Id_usuario = int.Parse(ddlUsuario.SelectedValue.ToString());
 
             objJefeDAO.Actualizar(obj);
 
