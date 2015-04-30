@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace AppWeb {
+namespace AppWeb1 {
     
     
     public partial class frmMantArea {

@@ -1,10 +1,10 @@
-﻿namespace AppWeb.Reporte {
+﻿namespace AppWeb1.Reporte {
     
     
     public partial class dsReportes {
     }
 }
-namespace AppWeb.Reporte {
+namespace AppWeb1.Reporte {
     
     
     public partial class dsReportes {

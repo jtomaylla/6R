@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace AppWeb.Seguridad {
+namespace AppWeb1.Seguridad {
     
     
     public partial class frmPerfilLista {

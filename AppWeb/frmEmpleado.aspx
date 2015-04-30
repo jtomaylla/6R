@@ -65,6 +65,15 @@
                     CssClass="cssButton" />
             </ItemTemplate>
         </asp:TemplateField>
+        <asp:TemplateField ShowHeader="False">
+            <ItemTemplate>
+                <asp:Button ID="btnVerHistorial" runat="server" Text="Historial" 
+                    CommandName="Seleccionar" 
+                    CausesValidation="False" 
+                    CommandArgument = '<%# Bind("IdEmpleado") %>'
+                    CssClass="cssButton" />
+            </ItemTemplate>
+        </asp:TemplateField>    
     </Columns>
     <PagerStyle CssClass="gridview_pager"></PagerStyle>
     </asp:gridview>

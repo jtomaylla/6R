@@ -11,7 +11,7 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AppWeb</RootNamespace>
+    <RootNamespace>AppWeb1</RootNamespace>
     <AssemblyName>AppWeb</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileUpgradeFlags>
@@ -142,6 +142,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="frmEmpleado.aspx" />
     <Content Include="error.html" />
+    <Content Include="frmEvaluacion.aspx" />
     <Content Include="frmMantArea.aspx" />
     <Content Include="frmMantCargo.aspx" />
     <Content Include="frmMantGrado.aspx" />
@@ -245,6 +246,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmEvaluacion.aspx.cs">
+      <DependentUpon>frmEvaluacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmEvaluacion.aspx.designer.cs">
+      <DependentUpon>frmEvaluacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmMantArea.aspx.cs">
       <DependentUpon>frmMantArea.aspx</DependentUpon>

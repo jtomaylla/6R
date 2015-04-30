@@ -10,7 +10,7 @@ using pe.com.seg.dal.dto;
 
 using pe.com.rbtec.web;
 
-namespace AppWeb.Seguridad
+namespace AppWeb1.Seguridad
 {
     public partial class frmUsuarioLista : System.Web.UI.Page
     {

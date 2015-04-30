@@ -13,7 +13,7 @@ using pe.com.sil.dal.dao;
 using pe.com.seg.dal.dto;
 using pe.com.seg.dal.dao;
 
-namespace AppWeb
+namespace AppWeb1
 {
     public partial class frmMantSede : System.Web.UI.Page
     {

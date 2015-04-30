@@ -10,7 +10,7 @@ using System.Data;
 using pe.com.seg.dal.dto;
 using pe.com.seg.dal.dao;
 using pe.com.sil.dal.dao;
-namespace AppWeb.Account
+namespace AppWeb1.Account
 {
     public partial class Login : System.Web.UI.Page
     {
