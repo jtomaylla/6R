@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace AppWeb1
+namespace AppWeb
 {
     public partial class About : System.Web.UI.Page
     {

@@ -10,7 +10,7 @@ using pe.com.seg.dal.dto;
 
 using pe.com.rbtec.web;
 
-namespace AppWeb1.Seguridad
+namespace AppWeb.Seguridad
 {
     public partial class frmUsuarioCambioClave : System.Web.UI.Page
     {

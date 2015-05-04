@@ -65,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dao\Formato6DAO.cs" />
     <Compile Include="dao\FormatoDAO.cs" />
     <Compile Include="dao\GradoDAO.cs" />
     <Compile Include="dao\EmpleadoDAO.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="dao\JefeDAO.cs" />
     <Compile Include="dto\CargoDTO.cs" />
     <Compile Include="dto\AreaDTO.cs" />
+    <Compile Include="dto\Formato6DTO.cs" />
     <Compile Include="dto\FormatoDTO.cs" />
     <Compile Include="dto\GradoDTO.cs" />
     <Compile Include="dto\EmpleadoDTO.cs" />

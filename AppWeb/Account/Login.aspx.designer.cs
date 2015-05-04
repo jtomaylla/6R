@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace AppWeb1.Account {
+namespace AppWeb.Account {
     
     
     public partial class Login {

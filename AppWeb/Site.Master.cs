@@ -10,7 +10,7 @@ using pe.com.seg.dal.dto;
 using pe.com.seg.dal.dao;
 using pe.com.sil.dal.dao;
 
-namespace AppWeb1
+namespace AppWeb
 {
     public partial class SiteMaster : System.Web.UI.MasterPage
     {

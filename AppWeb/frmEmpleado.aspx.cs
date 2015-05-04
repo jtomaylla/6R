@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
-
+using System.Configuration;
 using pe.com.rbtec.web;
 using pe.com.sil.dal.dto;
 using pe.com.sil.dal.dao;
@@ -13,7 +13,7 @@ using pe.com.sil.dal.dao;
 using pe.com.seg.dal.dto;
 using pe.com.seg.dal.dao;
 
-namespace AppWeb1
+namespace AppWeb
 {
     public partial class frmEmpleado : System.Web.UI.Page
     {
@@ -35,6 +35,7 @@ namespace AppWeb1
             this.btnGrabar.Attributes.Add("onclick", "return js_validar();");
             this.btnActualizar.Attributes.Add("onclick", "return js_validar();");
             this.lblMensaje.Text = "";
+            
             if (!Page.IsPostBack)
             {
                 InicializaPagina();
@@ -207,6 +208,27 @@ namespace AppWeb1
                     this.lblMensaje.Text = err.Message.ToString();
                 }
             }
+            if (e.CommandName == "Historial")
+            {
+                try
+                {
+                 
+                    var appSettings = ConfigurationManager.AppSettings;
+                    string linkPag = appSettings["LinkPag"];
+
+                    string CodigoEmpleado = e.CommandArgument.ToString();
+                    string strLink = linkPag + "/frmEvaluacion.aspx";
+                    strLink += "?Codigo=" + CodigoEmpleado;
+                    this.panLista.Visible = false;
+
+                    Response.Redirect(strLink);
+                }
+                catch (Exception err)
+                {
+                    this.lblMensaje.Text = err.Message.ToString();
+                }
+            }
+
         }
 
         protected void gvLista_PageIndexChanging(object sender, GridViewPageEventArgs e)

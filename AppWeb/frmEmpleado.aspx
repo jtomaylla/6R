@@ -18,7 +18,7 @@
                     return false;
             }
             if (!JS_hasValue(documento, "TEXT")) {
-                if (!JS_onError(frm, documento, "TEXT", "Ingrese Documneto"))
+                if (!JS_onError(frm, documento, "TEXT", "Ingrese Documento"))
                     return false;
             }
             return true;
@@ -26,7 +26,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<div class="cssTituloPagina">Mantenimiento de Empleado</div>
+    <div class="cssTituloPagina">Mantenimiento de Empleado</div>
 <asp:Label ID="lblMensaje" runat="server" Text="" CssClass="cssMensaje"></asp:Label>
 
 <asp:Panel ID="panLista" runat="server">
@@ -68,9 +68,9 @@
         <asp:TemplateField ShowHeader="False">
             <ItemTemplate>
                 <asp:Button ID="btnVerHistorial" runat="server" Text="Historial" 
-                    CommandName="Seleccionar" 
+                    CommandName="Historial" 
                     CausesValidation="False" 
-                    CommandArgument = '<%# Bind("IdEmpleado") %>'
+                    CommandArgument = '<%# Bind("CodigoEmpleado") %>'
                     CssClass="cssButton" />
             </ItemTemplate>
         </asp:TemplateField>    

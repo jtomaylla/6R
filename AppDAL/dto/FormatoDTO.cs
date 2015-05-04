@@ -12,11 +12,15 @@ namespace pe.com.sil.dal.dto
       private string _IdFormato;
       private string _Titulo;
 
+
       //Constructor
 
       public FormatoDTO() { }
 
-      public FormatoDTO(string _IdFormato, string _Titulo )
+      public FormatoDTO(
+          string _IdFormato, 
+          string _Titulo
+          )
       {
 
           this._IdFormato = _IdFormato;
@@ -35,6 +39,6 @@ namespace pe.com.sil.dal.dto
           get { return _Titulo; }
           set { _Titulo = value; }
       }
-
+      
   }
 }

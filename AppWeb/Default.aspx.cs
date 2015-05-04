@@ -9,6 +9,7 @@ using pe.com.seg.dal.dao;
 using pe.com.sil.dal.dao;
 using pe.com.sil.dal.dto;
 using System.Data;
+using System.Configuration;
 
 namespace AppWeb
 {
@@ -35,77 +36,6 @@ namespace AppWeb
             
         }
 
-
-        //protected void MenuUsuario() 
-        //{
-        //    string LoginUsuario = HttpContext.Current.User.Identity.Name;
-        //    UsuarioDTO objUsuario = objUsuarioDAO.ListarPorLogin(LoginUsuario);
-        //    FuncionDAO objFuncionDAO = new FuncionDAO();
-        //    PerfilFuncionDAO objPerfilFuncionDAO = new PerfilFuncionDAO();
-
-        //    List<PerfilFuncionDTO> ListaPerfilFuncion = new List<PerfilFuncionDTO>();
-        //    List<UsuarioPerfilDTO> ListaPerfil = objUsuarioPerfilDAO.ListarPorUsuario(objUsuario.IdUsuario);
-        //    for (int i = 0; i < ListaPerfil.Count; i++)
-        //    {
-
-        //        TreeNode ParentNode = new TreeNode();
-        //        ParentNode.Text = ListaPerfil[i].NombrePerfil;
-        //        ParentNode.Value = ListaPerfil[i].IdPerfil.ToString();
-        //        TreeView1.Nodes.Add(ParentNode);
-
-        //        ListaPerfilFuncion = objPerfilFuncionDAO.ListarPorPerfil(ListaPerfil[i].IdPerfil);
-
-        //        for (int j = 0; j < ListaPerfilFuncion.Count; j++)
-        //        {
-        //            FuncionDTO objFuncion = objFuncionDAO.ListarPorClave(ListaPerfilFuncion[j].IdFuncion);
-        //            TreeNode ChildNode = new TreeNode();
-        //            ChildNode.Text = objFuncion.NombreFuncion;
-        //            ChildNode.Value = objFuncion.IdFuncion.ToString();
-        //            ChildNode.NavigateUrl = objFuncion.Funcion;
-        //            ParentNode.ChildNodes.Add(ChildNode);
-        //        }
-
-
-        //    }
-
-        
-        //}
-        
-        //protected void CargarTreeView()
-        //{
-
-        //    PerfilDAO objPerfilDAO = new PerfilDAO();
-        //    PerfilFuncionDAO objPerfilFuncionDAO = new PerfilFuncionDAO();
-        //    FuncionDAO objFuncionDAO = new FuncionDAO();
-
-        //    List<PerfilDTO> ListaPerfil = new List<PerfilDTO>();
-        //    List<PerfilFuncionDTO> ListaPerfilFuncion = new List<PerfilFuncionDTO>();
-
-        //    ListaPerfil = objPerfilDAO.Listar(); 
-
-        //    for (int i = 0; i < ListaPerfil.Count; i++)
-        //    {
-
-        //        TreeNode ParentNode = new TreeNode();
-        //        ParentNode.Text = ListaPerfil[i].NombrePerfil;
-        //        ParentNode.Value = ListaPerfil[i].IdPerfil.ToString();
-        //        TreeView1.Nodes.Add(ParentNode);
-
-        //        ListaPerfilFuncion = objPerfilFuncionDAO.ListarPorPerfil(ListaPerfil[i].IdPerfil);
-
-        //        for (int j = 0; j < ListaPerfilFuncion.Count; j++)
-        //        {
-        //            FuncionDTO objFuncion = objFuncionDAO.ListarPorClave(ListaPerfilFuncion[j].IdFuncion); 
-        //            TreeNode ChildNode = new TreeNode();
-        //            ChildNode.Text = objFuncion.NombreFuncion;
-        //            ChildNode.Value = objFuncion.IdFuncion.ToString();
-        //            ChildNode.NavigateUrl = objFuncion.Funcion;
-        //            ParentNode.ChildNodes.Add(ChildNode);
-        //        }
-
-        //    }
-        //}
-
         protected void TreeView1_SelectedNodeChanged(object sender, EventArgs e)
         {
 
@@ -131,10 +61,10 @@ namespace AppWeb
                 EmpleadoDTO objEmpleado = objEmpleadoDAO.ListarPorClave(IdEmpleado);
                 if (objEmpleado.IdFormato != "")
                 {
+                    var appSettings = ConfigurationManager.AppSettings;
+                    string linkPagData= appSettings["LinkPagData"];
 
-                    //string strLink = "http://70.38.64.52/WSData/WFEncuestaNew.aspx?IdFormato=5a336346-8f8f-4310-bc6a-9a9647c62b90&CodigoProyecto=14&IdFormatoNemotecnico=RR.HH._%20FORM_41&CodigoIdioma=01&CodigoLocal=1&codigo=IdTest&CodigoGrupoVisita=0&CodigoVisita=0&Visita=Test&Test=1&vCodigoUsuario=00000&vOrganizacion=1&&vRol=2";
-                    //string strLink = "http://70.38.64.52/WSData/WFEncuestaNew.aspx";
-                    string strLink = "http://200.62.226.39/WSData/WFEncuestaNew6R.aspx";
+                    string strLink = linkPagData + "/WFEncuestaNew6R.aspx";
                     //strLink += "?IdFormato=5a336346-8f8f-4310-bc6a-9a9647c62b90";
                     strLink += "?IdFormato=" + objEmpleado.IdFormato;
                     strLink += "&CodigoProyecto=14";
@@ -146,7 +76,7 @@ namespace AppWeb
                     strLink += "&CodigoVisita=0";
                     strLink += "&Visita=Test";
                     strLink += "&Test=1";
-                    strLink += "&vCodigoUsuario=00000";
+                    strLink += "&vCodigoUsuario="+objUsuario.IdUsuario;
                     strLink += "&vOrganizacion=1";
                     strLink += "&&vRol=2";
                     strLink += "&vEvaluador=" + objUsuario.NombreUsuario;

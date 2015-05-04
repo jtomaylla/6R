@@ -19,29 +19,28 @@ namespace AppWeb
         //AlertaDAO objAlertaDAO = new AlertaDAO();
         string LoginUsuario = HttpContext.Current.User.Identity.Name;
         EmpleadoDAO objEmpleadoDAO = new EmpleadoDAO();
-        List<EmpleadoDTO> obj;
-
+        FormatoDAO objFormatoDAO = new FormatoDAO();
+        List<FormatoDTO> obj;
+        string codigo;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            codigo = Request["Codigo"];
             if (!Page.IsPostBack)
             {
-                //CargarTreeView();
-                //test
-                //MenuUsuario();
-                //test
                 this.lblMensaje.Text = "";
-                this.Lista();
+
+                this.Lista(codigo);
             }
 
         }
 
-        protected void Lista()
+        protected void Lista(string Codigo)
         {
-            string LoginUsuario = HttpContext.Current.User.Identity.Name;
-            UsuarioDTO objUsuario = objUsuarioDAO.ListarPorLogin(LoginUsuario);
+            //string LoginUsuario = HttpContext.Current.User.Identity.Name;
+            //UsuarioDTO objUsuario = objUsuarioDAO.ListarPorLogin(LoginUsuario);
 
-            List<EmpleadoDTO> obj = objEmpleadoDAO.ListarBusquedaPorJefe(objUsuario.IdUsuario);
+            List<FormatoDTO> obj = objFormatoDAO.ListarPorCodigo(Codigo);
             this.gvLista.DataSource = obj;
             this.gvLista.DataBind();
 
@@ -94,7 +93,7 @@ namespace AppWeb
         protected void gvLista_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             this.gvLista.PageIndex = e.NewPageIndex;
-            Lista();
+            Lista(codigo);
         }
     }
 

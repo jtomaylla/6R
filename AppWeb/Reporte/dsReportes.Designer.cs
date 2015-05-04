@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace AppWeb1.Reporte {
+namespace AppWeb.Reporte {
     
     
     /// <summary>

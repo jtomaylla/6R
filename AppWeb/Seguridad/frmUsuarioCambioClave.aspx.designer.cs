@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AppWeb1.Seguridad {
+namespace AppWeb.Seguridad {
     
     
     public partial class frmUsuarioCambioClave {

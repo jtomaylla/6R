@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AppWeb1.Account
+namespace AppWeb.Account
 {
 
 

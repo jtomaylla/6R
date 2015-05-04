@@ -7,10 +7,10 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace AppWeb1 {
+namespace AppWeb {
     
     
-    public partial class frmEvaluacion {
+    public partial class _Default {
         
         /// <summary>
         /// Control panLista.

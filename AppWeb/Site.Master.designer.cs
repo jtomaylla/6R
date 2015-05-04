@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace AppWeb1 {
+namespace AppWeb {
     
     
     public partial class SiteMaster {

@@ -8,7 +8,7 @@ using pe.com.seg.dal.dto;
 using pe.com.seg.dal.dao;
 using pe.com.rbtec.web;
 
-namespace AppWeb1.Seguridad
+namespace AppWeb.Seguridad
 {
     public partial class frmPerfilLista : System.Web.UI.Page
     {
