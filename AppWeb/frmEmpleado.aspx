@@ -8,7 +8,7 @@
             var codigo = document.getElementById("<%= txtCodigoEmpleado.ClientID%>");
             var nombre = document.getElementById("<%= txtNombre.ClientID%>");
             var documento = document.getElementById("<%= txtDocumentoIdentidad.ClientID%>");
-
+            var email = document.getElementById("<%= txtEmail.ClientID%>");
             if (!JS_hasValue(codigo, "TEXT")) {
                 if (!JS_onError(frm, codigo, "TEXT", "Ingrese Código de Empleado"))
                     return false;
@@ -21,6 +21,10 @@
                 if (!JS_onError(frm, documento, "TEXT", "Ingrese Documento"))
                     return false;
             }
+            if (!JS_hasValue(email, "TEXT")) {
+                if (!JS_onError(frm, email, "TEXT", "Ingrese Nombre"))
+                    return false;
+            } 
             return true;
         }
     </script>
@@ -154,6 +158,11 @@
             <td>Sede</td>
             <td>:</td>
             <td><asp:DropDownList ID="ddlSede" runat="server"></asp:DropDownList></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>:</td>
+            <td><asp:TextBox ID="txtEmail" runat="server" Width="600px"></asp:TextBox></td>
         </tr>
         <tr>
             <td>Estado</td>

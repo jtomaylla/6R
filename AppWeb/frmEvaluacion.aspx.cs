@@ -9,6 +9,7 @@ using pe.com.seg.dal.dao;
 using pe.com.sil.dal.dao;
 using pe.com.sil.dal.dto;
 using System.Data;
+using System.Configuration;
 
 namespace AppWeb
 {
@@ -19,8 +20,8 @@ namespace AppWeb
         //AlertaDAO objAlertaDAO = new AlertaDAO();
         string LoginUsuario = HttpContext.Current.User.Identity.Name;
         EmpleadoDAO objEmpleadoDAO = new EmpleadoDAO();
-        FormatoDAO objFormatoDAO = new FormatoDAO();
-        List<FormatoDTO> obj;
+        Formato6DAO objFormato6DAO = new Formato6DAO();
+        //List<Formato6DTO> obj;
         string codigo;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -40,53 +41,69 @@ namespace AppWeb
             //string LoginUsuario = HttpContext.Current.User.Identity.Name;
             //UsuarioDTO objUsuario = objUsuarioDAO.ListarPorLogin(LoginUsuario);
 
-            List<FormatoDTO> obj = objFormatoDAO.ListarPorCodigo(Codigo);
+            List<Formato6DTO> obj = objFormato6DAO.ListarPorCodigo(Codigo);
+            
             this.gvLista.DataSource = obj;
             this.gvLista.DataBind();
 
         }
         protected void gvLista_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "Seleccionar")
+            //string strLink = "http://200.62.226.39/WSData/WFEncuestaEdit6R.aspx?IdCabecera=21509&CodigoProyecto=2&Codigo=R0086&IdFormato=73936eab-db52-4176-9594-fbc710592c53&LoginUsuario=umovil&FechaDeVisita=18/03/2015&IdFormatoNemotecnico=CASI_A1_V1&CodigoGrupoVisita=3&CodigoVisita=12&Visita=VisitaInicial&Ruta=";
+            var appSettings = ConfigurationManager.AppSettings;
+            string linkPagData = appSettings["LinkPagData"];
+
+            string strLink = linkPagData + "/WFEncuestaEdit6R.aspx";
+
+            //string strLink = "http://200.62.226.39/WSData/WFEncuestaEdit6R.aspx";
+            Session["CodigoProyecto"] = 14;
+            int IdUsuario = 4;
+            UsuarioDTO objUsuario = objUsuarioDAO.ListarPorClave(IdUsuario);
+
+            int IdCabecera = int.Parse(e.CommandArgument.ToString());
+
+            Formato6DTO objFormato = objFormato6DAO.BuscarPorClave(IdCabecera);
+
+            EmpleadoDTO objEmpleado = objEmpleadoDAO.ListarPorCodigo(codigo);
+            if (objFormato.IdFormato != "")
             {
-                UsuarioDTO objUsuario = objUsuarioDAO.ListarPorLogin(LoginUsuario);
+                strLink += "?IdCabecera=" + IdCabecera;
+                strLink += "&CodigoProyecto=14";
+                strLink += "&codigo=" + objEmpleado.CodigoEmpleado;
+                strLink += "&IdFormato=" + objFormato.IdFormato;
+                strLink += "&LoginUsuario=admin";
+                strLink += "&IdFormatoNemotecnico=RR.HH._%20FORM_41";
+                strLink += "&FechaDeVisita=" + objFormato.FechaRegistro;
+                strLink += "&CodigoGrupoVisita=0";
+                strLink += "&CodigoVisita=0";
+                strLink += "&Visita=Test";
+                strLink += "&Ruta=1";
+                strLink += "&vCodigoUsuario=00000";
+                strLink += "&vOrganizacion=1";
+                strLink += "&vRol=2";
+                strLink += "&vEvaluador=" + objUsuario.NombreUsuario;
+                strLink += "&vEmpleado=" + objEmpleado.Nombre;
 
-                int IdEmpleado = int.Parse(e.CommandArgument.ToString());
-                EmpleadoDTO objEmpleado = objEmpleadoDAO.ListarPorClave(IdEmpleado);
-                if (objEmpleado.IdFormato != "")
+                if (e.CommandName == "Seleccionar")
                 {
-
-                    //string strLink = "http://70.38.64.52/WSData/WFEncuestaNew.aspx?IdFormato=5a336346-8f8f-4310-bc6a-9a9647c62b90&CodigoProyecto=14&IdFormatoNemotecnico=RR.HH._%20FORM_41&CodigoIdioma=01&CodigoLocal=1&codigo=IdTest&CodigoGrupoVisita=0&CodigoVisita=0&Visita=Test&Test=1&vCodigoUsuario=00000&vOrganizacion=1&&vRol=2";
-                    //string strLink = "http://70.38.64.52/WSData/WFEncuestaNew.aspx";
-                    //string strLink = "http://200.62.226.39/WSData/WFEncuestaEdit6R.aspx?IdCabecera=21509&CodigoProyecto=2&Codigo=R0086&IdFormato=73936eab-db52-4176-9594-fbc710592c53&LoginUsuario=umovil&FechaDeVisita=18/03/2015&IdFormatoNemotecnico=CASI_A1_V1&CodigoGrupoVisita=3&CodigoVisita=12&Visita=VisitaInicial&Ruta=";
-
-
-                    string strLink = "http://200.62.226.39/WSData/WFEncuestaEdit6R.aspx";
-                    //strLink += "?IdFormato=5a336346-8f8f-4310-bc6a-9a9647c62b90";
-                    strLink += "?IdFormato=" + objEmpleado.IdFormato;
-                    strLink += "&CodigoProyecto=14";
-                    strLink += "&IdFormatoNemotecnico=RR.HH._%20FORM_41";
-                    strLink += "&CodigoIdioma=01";
-                    strLink += "&CodigoLocal=1";
-                    strLink += "&codigo=" + objEmpleado.CodigoEmpleado;
-                    strLink += "&CodigoGrupoVisita=0";
-                    strLink += "&CodigoVisita=0";
-                    strLink += "&Visita=Test";
-                    strLink += "&Test=1";
-                    strLink += "&vCodigoUsuario=00000";
-                    strLink += "&vOrganizacion=1";
-                    strLink += "&&vRol=2";
-                    strLink += "&vEvaluador=" + objUsuario.NombreUsuario;
-                    strLink += "&vEmpleado=" + objEmpleado.Nombre;
-
                     this.panLista.Visible = false;
-
                     Response.Redirect(strLink);
                 }
-                else
+                if (e.CommandName == "EnviarCorreo")
                 {
-                    this.lblMensaje.Text = "Empleado no tiene asignado Formato de Evaluacion";
+                    if (objEmpleado.Email != "")
+                    {
+                        enviarEmail(objEmpleado.Email, objEmpleado.Nombre, objUsuario.Email, objUsuario.NombreUsuario, strLink);
+                    }
+                    else 
+                    {
+                        this.lblMensaje.Text = "Empleado no tiene asignado un Email";
+                    }
                 }
+            }
+            else
+            {
+                this.lblMensaje.Text = "Empleado no tiene asignado Formato de Evaluacion";
             }
         }
 
@@ -94,6 +111,11 @@ namespace AppWeb
         {
             this.gvLista.PageIndex = e.NewPageIndex;
             Lista(codigo);
+        }
+
+        protected void enviarEmail(string empEmail, string empNombre, string usuEmail, string usuNombre, string linkEval)
+        {
+
         }
     }
 

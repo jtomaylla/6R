@@ -19,6 +19,7 @@ namespace pe.com.sil.dal.dao
       const string C_LISTAR_POR_CLAVE = "USP_Empleado_ListarPorClave";
       const string C_LISTAR_BUSQUEDA = "USP_Empleado_Busqueda";
       const string C_LISTAR_BUSQUEDA_POR_JEFE = "USP_Empleado_BusquedaPorJefe";
+      const string C_LISTAR_POR_CODIGO = "USP_Empleado_ListarPorCodigo";
 
       public List<EmpleadoDTO> Listar()
       {
@@ -66,7 +67,8 @@ namespace pe.com.sil.dal.dao
                       obj.Unidad = (string)dr["Unidad"];
                   if (dr["Sede"] != System.DBNull.Value)
                       obj.Sede = (string)dr["Sede"];
-
+                  if (dr["Email"] != System.DBNull.Value)
+                      obj.Email = (string)dr["Email"];
 				   Lista.Add(obj);
 
               }
@@ -132,6 +134,8 @@ namespace pe.com.sil.dal.dao
                       {
                           obj.IdFormato = "";
                       };
+                  if (dr["Email"] != System.DBNull.Value)
+                      obj.Email = (string)dr["Email"];
               }
           }
           return obj;
@@ -186,7 +190,8 @@ namespace pe.com.sil.dal.dao
                       obj.Unidad = (string)dr["Unidad"];
                   if (dr["Sede"] != System.DBNull.Value)
                       obj.Sede = (string)dr["Sede"];
-
+                  if (dr["Email"] != System.DBNull.Value)
+                      obj.Email = (string)dr["Email"];
 
                   Lista.Add(obj);
               }
@@ -242,6 +247,8 @@ namespace pe.com.sil.dal.dao
                       obj.Unidad = (string)dr["Unidad"];
                   if (dr["Sede"] != System.DBNull.Value)
                       obj.Sede = (string)dr["Sede"];
+                  if (dr["Email"] != System.DBNull.Value)
+                      obj.Email = (string)dr["Email"];
                   
                   Lista.Add(obj);
               }
@@ -268,7 +275,7 @@ namespace pe.com.sil.dal.dao
           db.AddInParameter(dbCommand, "@CodigoSede", DbType.Int32, obj.CodigoSede); 
           db.AddInParameter(dbCommand, "@Estado", DbType.String, obj.Estado);
           db.AddInParameter(dbCommand, "@usuario_creacion", DbType.Int32, obj.Usuario_creacion);
-
+          db.AddInParameter(dbCommand, "@Email", DbType.String, obj.Email);
           
           int id = Convert.ToInt32(db.ExecuteScalar(dbCommand));
           return id;
@@ -293,7 +300,7 @@ namespace pe.com.sil.dal.dao
           db.AddInParameter(dbCommand, "@CodigoSede", DbType.Int32, obj.CodigoSede);
           db.AddInParameter(dbCommand, "@Estado", DbType.String, obj.Estado);
           db.AddInParameter(dbCommand, "@usuario_modificacion", DbType.Int32, obj.Usuario_modificacion);
-
+          db.AddInParameter(dbCommand, "@Email", DbType.String, obj.Email);
 
           db.ExecuteNonQuery(dbCommand);
       }
@@ -312,6 +319,72 @@ namespace pe.com.sil.dal.dao
               return null;
           else
               return fecha;
-      } 
+      }
+
+      public EmpleadoDTO ListarPorCodigo(string CodigoEmpleado)
+      {
+          List<EmpleadoDTO> Lista = new List<EmpleadoDTO>();
+          EmpleadoDTO obj = null;
+          Database db = DatabaseFactory.CreateDatabase("ApplicationConnectionString");
+          DbCommand dbCommand = db.GetStoredProcCommand(C_LISTAR_POR_CODIGO);
+          db.AddInParameter(dbCommand, "@CodigoEmpleado", DbType.String, CodigoEmpleado);
+
+          using (IDataReader dr = db.ExecuteReader(dbCommand))
+          {
+              if (dr.Read())
+              {
+                  obj = new EmpleadoDTO();
+
+                  if (dr["IdEmpleado"] != System.DBNull.Value)
+                      obj.IdEmpleado = (int)dr["IdEmpleado"];
+                  if (dr["CodigoEmpleado"] != System.DBNull.Value)
+                      obj.CodigoEmpleado = (string)dr["CodigoEmpleado"];
+                  if (dr["DocumentoIdentidad"] != System.DBNull.Value)
+                      obj.DocumentoIdentidad = (string)dr["DocumentoIdentidad"];
+                  if (dr["Nombre"] != System.DBNull.Value)
+                      obj.Nombre = (string)dr["Nombre"];
+                  if (dr["CodigoCargo"] != System.DBNull.Value)
+                      obj.CodigoCargo = (int)dr["CodigoCargo"];
+                  if (dr["Fiscalizado"] != System.DBNull.Value)
+                      obj.Fiscalizado = (string)dr["Fiscalizado"];
+                  if (dr["CodigoPuesto"] != System.DBNull.Value)
+                      obj.CodigoPuesto = (int)dr["CodigoPuesto"];
+                  if (dr["GradoPuesto"] != System.DBNull.Value)
+                      obj.GradoPuesto = (int)dr["GradoPuesto"];
+                  if (dr["CodigoArea"] != System.DBNull.Value)
+                      obj.CodigoArea = (int)dr["CodigoArea"];
+                  if (dr["CodigoUnidad"] != System.DBNull.Value)
+                      obj.CodigoUnidad = (int)dr["CodigoUnidad"];
+                  if (dr["FechaIngreso"] != System.DBNull.Value)
+                      obj.FechaIngreso = (DateTime)dr["FechaIngreso"];
+                  if (dr["CodigoJefe"] != System.DBNull.Value)
+                      obj.CodigoJefe = (int)dr["CodigoJefe"];
+                  if (dr["CodigoSede"] != System.DBNull.Value)
+                      obj.CodigoSede = (int)dr["CodigoSede"];
+                  if (dr["Estado"] != System.DBNull.Value)
+                      obj.Estado = (string)dr["Estado"];
+                  if (dr["Puesto"] != System.DBNull.Value)
+                      obj.Puesto = (string)dr["Puesto"];
+                  if (dr["Grado"] != System.DBNull.Value)
+                      obj.Grado = (string)dr["Grado"];
+                  if (dr["Unidad"] != System.DBNull.Value)
+                      obj.Unidad = (string)dr["Unidad"];
+                  if (dr["Sede"] != System.DBNull.Value)
+                      obj.Sede = (string)dr["Sede"];
+                  if (dr["IdFormato"] != System.DBNull.Value)
+                  {
+                      obj.IdFormato = (string)dr["IdFormato"];
+                  }
+                  else
+                  {
+                      obj.IdFormato = "";
+                  };
+                  if (dr["Email"] != System.DBNull.Value)
+                      obj.Email = (string)dr["Email"];
+              }
+          }
+          return obj;
+      }
+
   }
 }

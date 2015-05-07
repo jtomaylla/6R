@@ -32,8 +32,9 @@ namespace pe.com.sil.dal.dto
       private string _Unidad;
       private string _Sede;
       private string _IdFormato;
+      private string _Email;
 
- 
+
       public EmpleadoDTO() { }
 
       public EmpleadoDTO(
@@ -59,7 +60,8 @@ namespace pe.com.sil.dal.dto
            int _usuario_creacion,
            DateTime _fecha_modificacion,
            int _usuario_modificacion,
-           string _IdFormato)
+           string _IdFormato,
+           string _Email)
 
       {
           this._IdEmpleado = _IdEmpleado;
@@ -85,6 +87,7 @@ namespace pe.com.sil.dal.dto
           this._fecha_modificacion = _fecha_modificacion;
           this._usuario_modificacion = _usuario_modificacion;
           this._IdFormato = _IdFormato;
+          this._Email = _Email;
       }
 
 
@@ -264,6 +267,12 @@ namespace pe.com.sil.dal.dto
       {
           get { return _IdFormato; }
           set { _IdFormato = value; }
+      }
+
+      public string Email
+      {
+          get { return _Email; }
+          set { _Email = value; }
       }
       //Constructor
 

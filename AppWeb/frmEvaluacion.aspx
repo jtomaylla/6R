@@ -25,15 +25,14 @@
         AlternatingRowStyle-CssClass="gridview_alter"
         PageSize="20" 
         AllowPaging="true" 
-        OnPageIndexChanging="gvLista_PageIndexChanging"
+        OnPageIndexChanging="gvLista_PageIndexChanging" onselectedindexchanged="gvLista_SelectedIndexChanged"
     >
     <AlternatingRowStyle CssClass="gridview_alter"></AlternatingRowStyle>
     <PagerStyle CssClass="gridview_pager"></PagerStyle>
     <Columns>
         <asp:BoundField ReadOnly="True" DataField="IdCabecera" HeaderText="ID" ItemStyle-Width="50px"></asp:BoundField>
-        <asp:BoundField ReadOnly="True" DataField="IdFormato" HeaderText="Código" ItemStyle-Width="100px"></asp:BoundField>
-        <asp:BoundField ReadOnly="True" DataField="Titulo" HeaderText="Titulo" ItemStyle-Width="500px"></asp:BoundField>
-        <asp:BoundField ReadOnly="True" DataField="CodigoUsuario" HeaderText="CodigoUsuario" ItemStyle-Width="200px"></asp:BoundField>
+        <asp:BoundField ReadOnly="True" DataField="Titulo" HeaderText="Nombre Puesto" ItemStyle-Width="500px"></asp:BoundField>
+        <asp:BoundField ReadOnly="True" DataField="CodigoUsuario" HeaderText="Evaluador" ItemStyle-Width="200px"></asp:BoundField>
         <asp:BoundField ReadOnly="True" DataField="FechaRegistro" HeaderText="Fecha Registro" ItemStyle-Width="100px"></asp:BoundField>
         <asp:TemplateField ShowHeader="False">
             <ItemTemplate>
@@ -44,7 +43,15 @@
                     CssClass="cssButton" />
             </ItemTemplate>
         </asp:TemplateField>
-    </Columns>
+        <asp:TemplateField ShowHeader="False">
+            <ItemTemplate>
+                <asp:Button ID="btnEnviarCorreo" runat="server" Text="Email" 
+                    CommandName="EnviarCorreo" 
+                    CausesValidation="False" 
+                    CommandArgument = '<%# Bind("IdCabecera") %>'
+                    CssClass="cssButton" />
+            </ItemTemplate>
+        </asp:TemplateField>    </Columns>
     <PagerStyle CssClass="gridview_pager"></PagerStyle>
     </asp:gridview>
 </asp:Panel>

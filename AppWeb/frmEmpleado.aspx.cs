@@ -310,7 +310,7 @@ namespace AppWeb
                 obj.CodigoUnidad = int.Parse(ddlUnidad.SelectedValue.ToString());
                 obj.CodigoJefe = int.Parse(ddlJefe.SelectedValue.ToString());
                 obj.CodigoSede = int.Parse(ddlSede.SelectedValue.ToString());
-
+                obj.Email = txtEmail.Text;
 
                 if (this.chkEstado.Checked)
                     obj.Estado = "1";
