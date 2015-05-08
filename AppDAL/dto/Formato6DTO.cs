@@ -15,6 +15,8 @@ namespace pe.com.sil.dal.dto
       private int _IdCabecera;
       private DateTime _FechaRegistro;
       private string _CodigoUsuario;
+      private string _NombreUsuario;
+
 
       //Constructor
 
@@ -26,7 +28,8 @@ namespace pe.com.sil.dal.dto
           string _Codigo,
           int _IdCabecera,
           DateTime _FechaRegistro,
-          string _CodigoUsuario
+          string _CodigoUsuario,
+          string _NombreUsuario
           )
       {
 
@@ -36,6 +39,7 @@ namespace pe.com.sil.dal.dto
           this._IdCabecera = _IdCabecera;
           this._FechaRegistro = _FechaRegistro;
           this._CodigoUsuario = _CodigoUsuario;
+          this._NombreUsuario = _NombreUsuario;
       }
 
       //Get y Set
@@ -75,5 +79,10 @@ namespace pe.com.sil.dal.dto
           set { _CodigoUsuario = value; }
       }
 
+      public string NombreUsuario
+      {
+          get { return _NombreUsuario; }
+          set { _NombreUsuario = value; }
+      }
   }
 }

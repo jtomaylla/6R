@@ -16,6 +16,9 @@
 <div class="cssTablaRegistro">
 
 <asp:Panel ID="panLista" runat="server">
+    Empleado:<asp:TextBox ID="txtNombreEmpleado" runat="server" Width="400px" 
+        ReadOnly="True"></asp:TextBox><br />
+
     <asp:Label ID="lblMensaje" runat="server" Text="" CssClass="cssMensaje"></asp:Label>    
     <asp:gridview id="gvLista" runat="server" 
         autogeneratecolumns="False"
@@ -32,7 +35,7 @@
     <Columns>
         <asp:BoundField ReadOnly="True" DataField="IdCabecera" HeaderText="ID" ItemStyle-Width="50px"></asp:BoundField>
         <asp:BoundField ReadOnly="True" DataField="Titulo" HeaderText="Nombre Puesto" ItemStyle-Width="500px"></asp:BoundField>
-        <asp:BoundField ReadOnly="True" DataField="CodigoUsuario" HeaderText="Evaluador" ItemStyle-Width="200px"></asp:BoundField>
+        <asp:BoundField ReadOnly="True" DataField="NombreUsuario" HeaderText="Evaluador" ItemStyle-Width="200px"></asp:BoundField>
         <asp:BoundField ReadOnly="True" DataField="FechaRegistro" HeaderText="Fecha Registro" ItemStyle-Width="100px"></asp:BoundField>
         <asp:TemplateField ShowHeader="False">
             <ItemTemplate>

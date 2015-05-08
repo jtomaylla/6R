@@ -74,7 +74,7 @@
                 <asp:Button ID="btnVerHistorial" runat="server" Text="Historial" 
                     CommandName="Historial" 
                     CausesValidation="False" 
-                    CommandArgument = '<%# Bind("CodigoEmpleado") %>'
+                    CommandArgument = '<%# Bind("IdEmpleado") %>'
                     CssClass="cssButton" />
             </ItemTemplate>
         </asp:TemplateField>    

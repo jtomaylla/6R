@@ -23,10 +23,13 @@ namespace AppWeb
         Formato6DAO objFormato6DAO = new Formato6DAO();
         //List<Formato6DTO> obj;
         string codigo;
+        string nombreemp;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             codigo = Request["Codigo"];
+            nombreemp = Request["Nombre"];
+            this.txtNombreEmpleado.Text = nombreemp;
             if (!Page.IsPostBack)
             {
                 this.lblMensaje.Text = "";
@@ -49,6 +52,14 @@ namespace AppWeb
         }
         protected void gvLista_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+
+            int IdCabecera = int.Parse(e.CommandArgument.ToString());
+
+            Formato6DTO objFormato = objFormato6DAO.BuscarPorClave(IdCabecera);
+            Session["CodigoProyecto"] = 14;
+            int IdUsuario = Convert.ToInt32(objFormato.CodigoUsuario); 
+            UsuarioDTO objUsuario = objUsuarioDAO.ListarPorClave(IdUsuario);
+
             //string strLink = "http://200.62.226.39/WSData/WFEncuestaEdit6R.aspx?IdCabecera=21509&CodigoProyecto=2&Codigo=R0086&IdFormato=73936eab-db52-4176-9594-fbc710592c53&LoginUsuario=umovil&FechaDeVisita=18/03/2015&IdFormatoNemotecnico=CASI_A1_V1&CodigoGrupoVisita=3&CodigoVisita=12&Visita=VisitaInicial&Ruta=";
             var appSettings = ConfigurationManager.AppSettings;
             string linkPagData = appSettings["LinkPagData"];
@@ -56,13 +67,6 @@ namespace AppWeb
             string strLink = linkPagData + "/WFEncuestaEdit6R.aspx";
 
             //string strLink = "http://200.62.226.39/WSData/WFEncuestaEdit6R.aspx";
-            Session["CodigoProyecto"] = 14;
-            int IdUsuario = 4;
-            UsuarioDTO objUsuario = objUsuarioDAO.ListarPorClave(IdUsuario);
-
-            int IdCabecera = int.Parse(e.CommandArgument.ToString());
-
-            Formato6DTO objFormato = objFormato6DAO.BuscarPorClave(IdCabecera);
 
             EmpleadoDTO objEmpleado = objEmpleadoDAO.ListarPorCodigo(codigo);
             if (objFormato.IdFormato != "")
@@ -72,7 +76,7 @@ namespace AppWeb
                 strLink += "&codigo=" + objEmpleado.CodigoEmpleado;
                 strLink += "&IdFormato=" + objFormato.IdFormato;
                 strLink += "&LoginUsuario=admin";
-                strLink += "&IdFormatoNemotecnico=RR.HH._%20FORM_41";
+                strLink += "&IdFormatoNemotecnico=RR.HH._FORM_41";
                 strLink += "&FechaDeVisita=" + objFormato.FechaRegistro;
                 strLink += "&CodigoGrupoVisita=0";
                 strLink += "&CodigoVisita=0";
@@ -114,6 +118,11 @@ namespace AppWeb
         }
 
         protected void enviarEmail(string empEmail, string empNombre, string usuEmail, string usuNombre, string linkEval)
+        {
+
+        }
+
+        protected void gvLista_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

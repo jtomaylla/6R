@@ -49,6 +49,9 @@ namespace pe.com.sil.dal.dao
                     if (dr["FechaRegistro"] != System.DBNull.Value)
                         obj.FechaRegistro = (DateTime) dr["FechaRegistro"];
 
+                    if (dr["NombreUsuario"] != System.DBNull.Value)
+                        obj.NombreUsuario = (string)dr["NombreUsuario"];
+
                     Lista.Add(obj);
                     
                 }
@@ -91,6 +94,8 @@ namespace pe.com.sil.dal.dao
                     if (dr["FechaRegistro"] != System.DBNull.Value)
                         obj.FechaRegistro = (DateTime)dr["FechaRegistro"];
 
+                    if (dr["NombreUsuario"] != System.DBNull.Value)
+                        obj.NombreUsuario = (string)dr["NombreUsuario"];
                 }
             }
             return obj;

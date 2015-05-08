@@ -155,9 +155,9 @@ namespace AppWeb
 
         protected void gvLista_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            EmpleadoDTO obj;
             if (e.CommandName == "Seleccionar")
             {
-                EmpleadoDTO obj;
                 try
                 {
                     int IdEmpleado = int.Parse(e.CommandArgument.ToString());
@@ -168,7 +168,7 @@ namespace AppWeb
                     this.txtCodigoEmpleado.Text = obj.CodigoEmpleado;
                     this.txtDocumentoIdentidad.Text = obj.DocumentoIdentidad;
                     this.txtNombre.Text = obj.Nombre;
-
+                    this.txtEmail.Text = obj.Email;
                     if (obj.FechaIngreso.Year == 1)
                         this.txtFechaIngreso.Text = "";
                     else
@@ -210,6 +210,10 @@ namespace AppWeb
             }
             if (e.CommandName == "Historial")
             {
+                int IdEmpleado = int.Parse(e.CommandArgument.ToString());
+
+                obj = objEmpleadoDAO.ListarPorClave(IdEmpleado);
+
                 try
                 {
                  
@@ -218,7 +222,8 @@ namespace AppWeb
 
                     string CodigoEmpleado = e.CommandArgument.ToString();
                     string strLink = linkPag + "/frmEvaluacion.aspx";
-                    strLink += "?Codigo=" + CodigoEmpleado;
+                    strLink += "?Codigo=" + obj.CodigoEmpleado;
+                    strLink += "&Nombre=" + obj.Nombre;
                     this.panLista.Visible = false;
 
                     Response.Redirect(strLink);
@@ -261,8 +266,8 @@ namespace AppWeb
             obj.CodigoArea = int.Parse(ddlArea.SelectedValue.ToString());
             obj.CodigoUnidad = int.Parse(ddlUnidad.SelectedValue.ToString());
             obj.CodigoJefe = int.Parse(ddlJefe.SelectedValue.ToString());
-            obj.CodigoSede = int.Parse(ddlSede.SelectedValue.ToString()); 
-
+            obj.CodigoSede = int.Parse(ddlSede.SelectedValue.ToString());
+            obj.Email = txtEmail.Text;
 
             if (this.chkEstado.Checked)
                 obj.Estado = "1";
