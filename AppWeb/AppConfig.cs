@@ -16,6 +16,11 @@ namespace pe.com.rbtec.web
 {
     public static class AppConfig
     {
+        //PARAMETROS MAIL
+        const string sendMailEnabled = "SendMailEnabled";
+        const string pathTemplateHTML = "PathTemplateHTML";
+        const string url6M = "Url6M";
+        const string refreshInterval = "RefreshInterval";
 
         public static string nombreEmpresa()
         {
@@ -56,6 +61,37 @@ namespace pe.com.rbtec.web
             return 0.19f;
         }
 
+        /// <summary>
+        /// Recupera un valor desde el web.config dado un key
+        /// </summary>
+        private static string GetValue(string key)
+        {
+            return ConfigurationManager.AppSettings[key];
+        }
+
+        #region -- Parametros Mail --
+
+        public static string Url6R
+        {
+            get { return Convert.ToString(GetValue(url6R)); }
+        }
+
+        public static int RefreshInterval
+        {
+            get { return Convert.ToInt32(GetValue(refreshInterval)); }
+        }
+
+        public static bool SendMailEnabled
+        {
+            get { return Convert.ToBoolean(GetValue(sendMailEnabled)); }
+        }
+
+        public static string PathTemplateHTML
+        {
+            get { return Convert.ToString(GetValue(pathTemplateHTML)); }
+        }
+
+        #endregion
     }
 }
 

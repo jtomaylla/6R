@@ -10,6 +10,9 @@ using pe.com.sil.dal.dao;
 using pe.com.sil.dal.dto;
 using System.Data;
 using System.Configuration;
+using System.Net.Mail;
+using AppWeb.Seguridad;
+using pe.com.rbtec.web;
 
 namespace AppWeb
 {
@@ -119,13 +122,32 @@ namespace AppWeb
 
         protected void enviarEmail(string empEmail, string empNombre, string usuEmail, string usuNombre, string linkEval)
         {
+            #region Notifications
 
+            //string Owner = SessionManager.CurrentUser.Full_Name;
+            List<string> mailList = new List<string>();
+            mailList.Add(empEmail);
+            mailList.Add(usuEmail);
+            //foreach (var collaborator in item.RESOURCECollection) mailList.Add(RuleUser.GetOne(collaborator.Id_User).Email);
+            if (mailList.Count > 0)
+            {
+                RuleMail.SendMail(
+                    mailList,
+                    string.Format(RuleMail.GetHtml(Server.MapPath(string.Format("{0}{1}.htm", AppConfig.PathTemplateHTML, "TmpAssignUserToTaskProject"))),
+                    "lblTask.Text", 
+                    "lblProject.Text", 
+                    AppConfig.Url6R), 
+                    "Resources.MsjApp.Mail_Subject");
+            }
+
+            #endregion
         }
 
         protected void gvLista_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
+
     }
 
 }
