@@ -16,19 +16,30 @@ namespace pe.com.rbtec.web
 {
     public static class AppConfig
     {
+        #region Keys
+
+        const string enterprisename = "Enterprisename";
+        const string enableClearCacheSystem = "EnableClearCacheSystem";
+        const string pathUserImage = "PathUserImage";
+        const string pathOrganizationImage = "PathOrganizationImage";
+        const string pathAttachmentFiles = "PathAttachmentFiles";
         //PARAMETROS MAIL
         const string sendMailEnabled = "SendMailEnabled";
         const string pathTemplateHTML = "PathTemplateHTML";
-        const string url6M = "Url6M";
-        const string refreshInterval = "RefreshInterval";
+        const string url6R = "Url6R";
+        const string refreshInterval = "RefreshInterval";        
+        
+        #endregion
+
 
         public static string nombreEmpresa()
         {
-            //string strTmp = "";
-            //if (System.Configuration.ConfigurationManager.AppSettings["AppNombreEmpresa"] != null) {
-            //    strTmp = System.Configuration.ConfigurationManager.AppSettings["AppNombreEmpresa"];
-            //}
-            return "LA GRAN GUIA S.A.\nSERVICIOS DE PUBLICIDAD\nLOS CONQUITADORES #1700, PISO 4\nPROVIDENCIA\n99.538.470-1\n2SANTIAGO";
+            string strTmp = "";
+            if (System.Configuration.ConfigurationManager.AppSettings["AppNombreEmpresa"] != null)
+            {
+                strTmp = System.Configuration.ConfigurationManager.AppSettings["AppNombreEmpresa"];
+            }
+            return strTmp;
         }
 
         public static string nombreSistema()
@@ -69,6 +80,50 @@ namespace pe.com.rbtec.web
             return ConfigurationManager.AppSettings[key];
         }
 
+
+
+        #region Properties
+
+        /// <summary>
+        /// Devuelve la direccion de la carpeta de archivos adjuntos
+        /// </summary>
+        public static string PathAttachmentFiles
+        {
+            get { return GetValue(pathAttachmentFiles); }
+        }
+
+        /// <summary>
+        /// Devuelve la direccion de la carpeta de imagenes de usuario
+        /// </summary>
+        public static string PathOrganizationImage
+        {
+            get { return GetValue(pathOrganizationImage); }
+        }
+
+        /// <summary>
+        /// Devuelve la direccion de la carpeta de imagenes de usuario
+        /// </summary>
+        public static string PathUserImage
+        {
+            get { return GetValue(pathUserImage); }
+        }
+
+        /// <summary>
+        ///Recupera Valor que indica si se usara la caracteristica de limpiar cache
+        /// </summary>
+        public static string EnableClearCacheSystem
+        {
+            get { return GetValue(enableClearCacheSystem); }
+        }
+
+        /// <summary>
+        ///Recupera el nombre del sistema actual
+        /// </summary>
+        public static string Enterprisename
+        {
+            get { return GetValue(enterprisename); }
+        }
+
         #region -- Parametros Mail --
 
         public static string Url6R
@@ -90,6 +145,8 @@ namespace pe.com.rbtec.web
         {
             get { return Convert.ToString(GetValue(pathTemplateHTML)); }
         }
+
+        #endregion
 
         #endregion
     }

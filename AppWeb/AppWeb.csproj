@@ -171,6 +171,16 @@
     <Content Include="Images\headingBarBg.gif" />
     <Content Include="Images\key.png" />
     <Content Include="Images\lightBlue_back.jpg" />
+    <Content Include="Scripts\jquery-1.11.1.min.js" />
+    <Content Include="Scripts\jquery-1.4.4.min.js" />
+    <Content Include="Scripts\jquery-latest.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.9.custom.js" />
+    <Content Include="Scripts\jquery.alerts.js" />
+    <Content Include="Scripts\jquery.bar.custom.js" />
+    <Content Include="Scripts\jquery.scrollTo-min.js" />
+    <Content Include="Scripts\jquery.session.js" />
+    <Content Include="Scripts\jquery.tabs.pack.js" />
+    <Content Include="Scripts\jquery.ui.autocomplete.js" />
     <Content Include="Scripts\popcalendar.js" />
     <Content Include="Scripts\rbtec.js" />
     <Content Include="Seguridad\frmFuncionLista.aspx" />
@@ -184,6 +194,13 @@
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="TemplatesHTML\TmpAssignUserToEvaluation.htm" />
+    <Content Include="TemplatesHTML\NO BORRAR.txt" />
+    <Content Include="TemplatesHTML\TmpAssignUserToProject.htm" />
+    <Content Include="TemplatesHTML\TmpAssignUserToTaskProject.htm" />
+    <Content Include="TemplatesHTML\TmpChangePassword.htm" />
+    <Content Include="TemplatesHTML\TmpCreateUser.htm" />
+    <Content Include="TemplatesHTML\TmpEmailAlert.htm" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -344,6 +361,7 @@
     <Compile Include="Seguridad\frmUsuarioLista.aspx.designer.cs">
       <DependentUpon>frmUsuarioLista.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Seguridad\RuleMail.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

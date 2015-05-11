@@ -28,6 +28,9 @@ namespace AppWeb
         string codigo;
         string nombreemp;
 
+        //
+        string empEmail; string empNombre; string usuEmail; string usuNombre; string linkEval;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             codigo = Request["Codigo"];
@@ -36,7 +39,8 @@ namespace AppWeb
             if (!Page.IsPostBack)
             {
                 this.lblMensaje.Text = "";
-
+                this.panEmail.Visible = false;
+                this.panLista.Visible = true;
                 this.Lista(codigo);
             }
 
@@ -59,7 +63,7 @@ namespace AppWeb
             int IdCabecera = int.Parse(e.CommandArgument.ToString());
 
             Formato6DTO objFormato = objFormato6DAO.BuscarPorClave(IdCabecera);
-            Session["CodigoProyecto"] = 14;
+            //Session["CodigoProyecto"] = 14;
             int IdUsuario = Convert.ToInt32(objFormato.CodigoUsuario); 
             UsuarioDTO objUsuario = objUsuarioDAO.ListarPorClave(IdUsuario);
 
@@ -100,7 +104,9 @@ namespace AppWeb
                 {
                     if (objEmpleado.Email != "")
                     {
-                        enviarEmail(objEmpleado.Email, objEmpleado.Nombre, objUsuario.Email, objUsuario.NombreUsuario, strLink);
+                        this.panEmail.Visible = true;
+                        this.panLista.Visible = false;
+                        mostrarEmail(objEmpleado.Email, objEmpleado.Nombre, objUsuario.Email, objUsuario.NombreUsuario, strLink);
                     }
                     else 
                     {
@@ -122,6 +128,7 @@ namespace AppWeb
 
         protected void enviarEmail(string empEmail, string empNombre, string usuEmail, string usuNombre, string linkEval)
         {
+
             #region Notifications
 
             //string Owner = SessionManager.CurrentUser.Full_Name;
@@ -133,11 +140,11 @@ namespace AppWeb
             {
                 RuleMail.SendMail(
                     mailList,
-                    string.Format(RuleMail.GetHtml(Server.MapPath(string.Format("{0}{1}.htm", AppConfig.PathTemplateHTML, "TmpAssignUserToTaskProject"))),
-                    "lblTask.Text", 
-                    "lblProject.Text", 
-                    AppConfig.Url6R), 
-                    "Resources.MsjApp.Mail_Subject");
+                    string.Format(RuleMail.GetHtml(Server.MapPath(string.Format("{0}{1}.htm", AppConfig.PathTemplateHTML, "TmpAssignUserToEvaluation"))),
+                        empNombre,
+                        usuNombre,
+                        linkEval), 
+                    "RRHH: Evaluacion del Desempeño");
             }
 
             #endregion
@@ -145,6 +152,50 @@ namespace AppWeb
 
         protected void gvLista_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+        }
+        protected void mostrarEmail(string empEmail, string empNombre, string usuEmail, string usuNombre, string linkEval)
+        {
+            this.txtempEmail.Text = empEmail;
+            this.txtempNombre.Text = empNombre;
+            this.txtusuEmail.Text = usuEmail;
+            this.txtusuNombre.Text = usuNombre;
+            this.txtlinkEval.Text = linkEval;
+
+            texto.InnerHtml = string.Format(RuleMail.GetHtml(Server.MapPath(string.Format("{0}{1}.htm", AppConfig.PathTemplateHTML, "TmpAssignUserToEvaluation"))),
+                        empNombre,
+                        usuNombre,
+                        linkEval);
+
+        }
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            //this.panEmail.Visible = false;
+            //this.panLista.Visible = true;
+
+            var appSettings = ConfigurationManager.AppSettings;
+            string linkPag = appSettings["LinkPag"];
+            string strLink = linkPag + "/frmEmpleado.aspx";
+
+            Response.Redirect(strLink);
+        }
+
+        protected void btnEmail_Click(object sender, EventArgs e)
+        {
+            enviarEmail(this.txtempEmail.Text,
+                this.txtempNombre.Text,
+                this.txtusuEmail.Text,
+                this.txtusuNombre.Text,
+                this.txtlinkEval.Text);
+
+            var appSettings = ConfigurationManager.AppSettings;
+            string linkPag = appSettings["LinkPag"];
+            string strLink = linkPag + "/frmEmpleado.aspx";
+
+            Response.Redirect(strLink);
+
+            //this.panEmail.Visible = true;
+            //this.panLista.Visible = false;
 
         }
 

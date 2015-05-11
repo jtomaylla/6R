@@ -1,9 +1,27 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmEvaluacion.aspx.cs" Inherits="AppWeb.frmEvaluacion" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+    <script type="text/javascript" src='<%# ResolveUrl("~/Scripts/jquery-latest.min.js") %>'></script>
+    <script type="text/javascript" src='<%# ResolveUrl("~/Scripts/jquery-ui-1.8.9.custom.js") %>'></script>
+
+    <script type="text/javascript">
+        function ShowPopup(message) {
+            $(function () {
+                $("#dialog").html(message);
+                $("#dialog").dialog({
+                    title: "jQuery Dialog Popup",
+                    buttons: {
+                        Close: function () {
+                            $(this).dialog('close');
+                        }
+                    },
+                    modal: true
+                });
+            });
+        };
+    </script>
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-
 
 <div class="cssTituloPagina">Administración de Evaluaciones</div>
 
@@ -60,7 +78,24 @@
 </asp:Panel>
 
 
-    
+<asp:Panel ID="panEmail" runat="server">
+    <div class="cssTablaCabeceraRegistro">Enviar Email</div>
+    <div class="cssTablaEmail">
+        <table>
+        <tr>
+            <td>
+                    
+                    <div ID="texto" runat="server" ></div>
+
+            </td>
+        </tr>
+        </table>
+        <asp:Button ID="btnEmail" runat="server" Text="Enviar Email" CssClass="cssButton" onclick="btnEmail_Click" />
+        <asp:Button ID="btnCancelar" runat="server" CssClass="cssButton" onclick="btnCancelar_Click" Text="Cancelar" />
+
+    </div>
+
+</asp:Panel>    
   
 </div>
 
@@ -68,5 +103,10 @@
 </tr>
 </table>
     <asp:TextBox ID="txtIdUsuario" runat="server" Visible="false"></asp:TextBox>
+    <asp:TextBox ID="txtempEmail" runat="server" Visible="false"></asp:TextBox>
+    <asp:TextBox ID="txtempNombre" runat="server" Visible="false"></asp:TextBox>
+    <asp:TextBox ID="txtusuEmail" runat="server" Visible="false"></asp:TextBox>
+    <asp:TextBox ID="txtusuNombre" runat="server" Visible="false"></asp:TextBox>
+    <asp:TextBox ID="txtlinkEval" runat="server" Visible="false"></asp:TextBox>
 </asp:Content>
 
