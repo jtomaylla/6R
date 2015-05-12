@@ -29,13 +29,13 @@ namespace AppWeb
         string nombreemp;
 
         //
-        string empEmail; string empNombre; string usuEmail; string usuNombre; string linkEval;
-
         protected void Page_Load(object sender, EventArgs e)
         {
             codigo = Request["Codigo"];
             nombreemp = Request["Nombre"];
             this.txtNombreEmpleado.Text = nombreemp;
+
+            btnCancelar.Attributes.Add("onClick", "javascript:history.back(); return false;");
             if (!Page.IsPostBack)
             {
                 this.lblMensaje.Text = "";
@@ -106,7 +106,16 @@ namespace AppWeb
                     {
                         this.panEmail.Visible = true;
                         this.panLista.Visible = false;
-                        mostrarEmail(objEmpleado.Email, objEmpleado.Nombre, objUsuario.Email, objUsuario.NombreUsuario, strLink);
+                        string str = "This is a test";
+                        //////////////0123456789012345678901
+                        //retString = str.Substring(10, 4);
+                        //intIndex  = str.IndexOf("Test") = 10
+                        //intLong   = str.Length = 14
+                        string strNombre = objEmpleado.Nombre;
+                        if (strNombre.IndexOf(",") != -1){
+                            strNombre = strNombre.Substring(strNombre.IndexOf(",")+1, strNombre.Length - strNombre.IndexOf(",") -1);
+                        }
+                        mostrarEmail(objEmpleado.Email, strNombre, objUsuario.Email, objUsuario.NombreUsuario, strLink);
                     }
                     else 
                     {
@@ -173,11 +182,11 @@ namespace AppWeb
             //this.panEmail.Visible = false;
             //this.panLista.Visible = true;
 
-            var appSettings = ConfigurationManager.AppSettings;
-            string linkPag = appSettings["LinkPag"];
-            string strLink = linkPag + "/frmEmpleado.aspx";
+            //var appSettings = ConfigurationManager.AppSettings;
+            //string linkPag = appSettings["LinkPag"];
+            //string strLink = linkPag + "/frmEmpleado.aspx";
 
-            Response.Redirect(strLink);
+            //Response.Redirect(strLink);
         }
 
         protected void btnEmail_Click(object sender, EventArgs e)
@@ -196,6 +205,10 @@ namespace AppWeb
 
             //this.panEmail.Visible = true;
             //this.panLista.Visible = false;
+
+            //object refUrl = ViewState["RefUrl"];
+            //if (refUrl != null)
+            //    Response.Redirect((string)refUrl);
 
         }
 
