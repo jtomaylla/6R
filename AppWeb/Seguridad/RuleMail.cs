@@ -27,8 +27,7 @@ namespace AppWeb.Seguridad
             //solo para pruebas
 
             //To.Clear();
-            //msg.To.Add("wesleycampossalazar@gmail.com");
-            msg.To.Add("juan.tomaylla@gmail.com");
+            //msg.To.Add("juan.tomaylla@gmail.com");
 
             //fin solo para pruebas
 

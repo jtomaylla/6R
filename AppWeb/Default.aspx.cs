@@ -78,7 +78,7 @@ namespace AppWeb
                     strLink += "&Test=1";
                     strLink += "&vCodigoUsuario="+objUsuario.IdUsuario;
                     strLink += "&vOrganizacion=1";
-                    strLink += "&&vRol=2";
+                    strLink += "&vRol=2";
                     strLink += "&vEvaluador=" + objUsuario.NombreUsuario;
                     strLink += "&vEmpleado=" + objEmpleado.Nombre;
 

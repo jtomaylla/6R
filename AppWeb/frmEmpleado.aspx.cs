@@ -199,7 +199,7 @@ namespace AppWeb
 
                     this.btnGrabar.Visible = false;
                     this.btnActualizar.Visible = true;
-                    this.btnEliminar.Visible = true;
+                    this.btnEliminar.Visible = false;
                     this.btnCancelar.Visible = true;
 
                 }
@@ -282,7 +282,7 @@ namespace AppWeb
 
             this.btnNuevo.Visible = false;
             this.btnActualizar.Visible = true;
-            this.btnEliminar.Visible = true;
+            this.btnEliminar.Visible = false;
             this.panRegistro.Visible = true;
             this.panLista.Visible = false;
             this.lblMensaje.Text = "Datos creados!!";
