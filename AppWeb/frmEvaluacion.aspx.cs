@@ -20,7 +20,6 @@ namespace AppWeb
     {
         UsuarioDAO objUsuarioDAO = new UsuarioDAO();
         UsuarioPerfilDAO objUsuarioPerfilDAO = new UsuarioPerfilDAO();
-        //AlertaDAO objAlertaDAO = new AlertaDAO();
         string LoginUsuario = HttpContext.Current.User.Identity.Name;
         EmpleadoDAO objEmpleadoDAO = new EmpleadoDAO();
         Formato6DAO objFormato6DAO = new Formato6DAO();

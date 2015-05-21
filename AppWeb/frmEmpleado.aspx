@@ -22,7 +22,7 @@
                     return false;
             }
             if (!JS_hasValue(email, "TEXT")) {
-                if (!JS_onError(frm, email, "TEXT", "Ingrese Nombre"))
+                if (!JS_onError(frm, email, "TEXT", "Ingrese Email"))
                     return false;
             } 
             return true;

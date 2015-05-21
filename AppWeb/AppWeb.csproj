@@ -140,6 +140,7 @@
     <Content Include="Account\Images\_GrillaEliminar.gif" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="frmEmpConEval.aspx" />
     <Content Include="frmEmpleado.aspx" />
     <Content Include="error.html" />
     <Content Include="frmEvaluacion.aspx" />
@@ -150,6 +151,7 @@
     <Content Include="frmMantPuesto.aspx" />
     <Content Include="frmMantSede.aspx" />
     <Content Include="frmMantUnidad.aspx" />
+    <Content Include="frmReportes.aspx" />
     <Content Include="Images\btn-bg1.gif" />
     <Content Include="Images\close.gif" />
     <Content Include="Images\del.gif" />
@@ -171,6 +173,7 @@
     <Content Include="Images\headingBarBg.gif" />
     <Content Include="Images\key.png" />
     <Content Include="Images\lightBlue_back.jpg" />
+    <Content Include="EmpConEval.aspx" />
     <Content Include="Scripts\jquery-1.11.1.min.js" />
     <Content Include="Scripts\jquery-1.4.4.min.js" />
     <Content Include="Scripts\jquery-latest.min.js" />
@@ -250,6 +253,13 @@
     <Compile Include="AppConfig.cs" />
     <Compile Include="AppConstantes.cs" />
     <Compile Include="AppUtilidad.cs" />
+    <Compile Include="frmEmpConEval.aspx.cs">
+      <DependentUpon>frmEmpConEval.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmEmpConEval.aspx.designer.cs">
+      <DependentUpon>frmEmpConEval.aspx</DependentUpon>
+    </Compile>
     <Compile Include="frmEmpleado.aspx.cs">
       <DependentUpon>frmEmpleado.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -320,10 +330,22 @@
     <Compile Include="frmMantUnidad.aspx.designer.cs">
       <DependentUpon>frmMantUnidad.aspx</DependentUpon>
     </Compile>
+    <Compile Include="frmReportes.aspx.cs">
+      <DependentUpon>frmReportes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmReportes.aspx.designer.cs">
+      <DependentUpon>frmReportes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reporte\dsRepEvaluacion.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsRepEvaluacion.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reporte\dsReportes.cs">
       <DependentUpon>dsReportes.xsd</DependentUpon>
       <SubType>Component</SubType>
@@ -332,6 +354,19 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsReportes.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="EmpConEval.aspx.cs">
+      <DependentUpon>EmpConEval.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EmpConEval.aspx.designer.cs">
+      <DependentUpon>EmpConEval.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="rptEmpConEval1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptEmpConEval1.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Seguridad\frmFuncionLista.aspx.cs">
       <DependentUpon>frmFuncionLista.aspx</DependentUpon>
@@ -386,6 +421,17 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\Profile1.pubxml" />
+    <None Include="Reporte\dsRepEvaluacion.xsc">
+      <DependentUpon>dsRepEvaluacion.xsd</DependentUpon>
+    </None>
+    <None Include="Reporte\dsRepEvaluacion.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsRepEvaluacion.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reporte\dsRepEvaluacion.xss">
+      <DependentUpon>dsRepEvaluacion.xsd</DependentUpon>
+    </None>
     <None Include="Reporte\dsReportes.xsc">
       <DependentUpon>dsReportes.xsd</DependentUpon>
     </None>
@@ -400,6 +446,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="rptEmpConEval1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptEmpConEval1.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

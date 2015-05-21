@@ -71,6 +71,7 @@
     <Compile Include="dao\EmpleadoDAO.cs" />
     <Compile Include="dao\AreaDAO.cs" />
     <Compile Include="dao\CargoDAO.cs" />
+    <Compile Include="dao\ListadoEmpConEvalDAO.cs" />
     <Compile Include="dao\UnidadDAO.cs" />
     <Compile Include="dao\SedeDAO.cs" />
     <Compile Include="dao\PuestoDAO.cs" />
