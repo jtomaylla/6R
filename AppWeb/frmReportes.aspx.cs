@@ -45,6 +45,9 @@ namespace AppWeb
             this.txtIdReporte.Text = "1";
             this.panMenu.Visible=false;
             this.panRepEval.Visible=true;
+            this.lblTitulo.Text = "Colaboradores con Evaluaciones";
+            this.txtFechaInicio.Text = "01/01/2000";
+            this.txtFechaFin.Text = DateTime.Today.ToShortDateString();
         }
 
         protected void lnkPrint2_Click(object sender, EventArgs e)
@@ -52,6 +55,9 @@ namespace AppWeb
             this.txtIdReporte.Text = "2";
             this.panMenu.Visible=false;
             this.panRepEval.Visible=true;
+            this.lblTitulo.Text = "Colaboradores sin Evaluaciones";
+            this.txtFechaInicio.Text = "01/01/2000";
+            this.txtFechaFin.Text = DateTime.Today.ToShortDateString();
         }
 
         protected void Imprimir(string frmNombre,int codigounidad, DateTime fechaini, DateTime fechafin)
@@ -66,12 +72,10 @@ namespace AppWeb
             string strLink = linkPag + "/" + frmNombre;
             strLink += "?CodigoUnidad=" + CodigoUnidad + "&FechaIni=" + FechaIni + "&FechaFin=" + FechaFin;
 
-            //Response.Redirect("../EmpConEval.aspx?CodigoUnidad=" + CodigoUnidad + "&FechaIni=" + FechaIni + "&FechaFin=" + FechaFin);
-            //Response.Redirect("..\" + frmNombre + "?CodigoUnidad=" + CodigoUnidad + "&FechaIni=" + FechaIni + "&FechaFin=" + FechaFin);
             Response.Redirect(strLink);
         }
 
-        protected void btnGrabar_Click(object sender, EventArgs e)
+        protected void btnImprimir_Click(object sender, EventArgs e)
         {
             if (this.txtIdReporte.Text == "1") 
             {

@@ -65,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dao\ListadoEmpSinEvalDAO.cs" />
     <Compile Include="dao\Formato6DAO.cs" />
     <Compile Include="dao\FormatoDAO.cs" />
     <Compile Include="dao\GradoDAO.cs" />

@@ -14,61 +14,18 @@ using AppWeb.Reporte;
 
 namespace AppWeb
 {
-    public partial class frmEmpConEval : System.Web.UI.Page
+    public partial class frmEmpSinEval : System.Web.UI.Page
     {
-        ListadoEmpConEvalDAO objListado = new ListadoEmpConEvalDAO();
+        ListadoEmpSinEvalDAO objListado = new ListadoEmpSinEvalDAO();
         string CodigoUnidad;
         string FechaIni;
         string FechaFin;
         protected void Page_Load(object sender, EventArgs e)
         {
-            CodigoUnidad = Request["CodigoUnidad"];
-            FechaIni = Request["FechaIni"];
-            FechaFin = Request["FechaFin"];
             if (!Page.IsPostBack)
             {
                 //InicializaPagina();
             }
-        }
-        protected void InicializaPagina()
-        {
-
-            CodigoUnidad = Request["CodigoUnidad"];
-            FechaIni = Request["FechaIni"];
-            FechaFin = Request["FechaFin"];
-
-            DataTable dt = objListado.ListarTodos(
-                int.Parse(CodigoUnidad),
-                AppUtilidad.stringToDateTime(FechaIni, "DD/MM/YYYY"),
-                AppUtilidad.stringToDateTime(FechaFin, "DD/MM/YYYY"));
-
-            //dsRepEvaluacion dsEmpConEval = new dsRepEvaluacion();
-            CrystalDecisions.CrystalReports.Engine.ReportDocument myReportDocument;
-            myReportDocument = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
-            string strRuta = Server.MapPath("rptEmpConEval1.rpt");
-            myReportDocument.Load(strRuta);
-            myReportDocument.SetDataSource(dt);
-            myReportDocument.SetParameterValue("FechaIni", AppUtilidad.stringToDateTime(FechaIni, "DD/MM/YYYY"));
-            myReportDocument.SetParameterValue("FechaFin", AppUtilidad.stringToDateTime(FechaFin, "DD/MM/YYYY"));
-            Session.Add("ReporteCrystal", myReportDocument);
-            Session.Add("FormatoReporte", "PDF");
-
-            MemoryStream stream = new MemoryStream();
-            stream = (MemoryStream)myReportDocument.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
-            Response.ContentType = "application/pdf";
-
-            myReportDocument.Close();
-            myReportDocument.Dispose();
-
-            Response.Clear();
-            Response.Buffer = true;
-
-            Response.BinaryWrite(stream.ToArray());
-            Response.End();
-
-            stream.Flush();
-            stream.Close();
-            stream.Dispose();
         }
 
         protected void btnpdf_Click(object sender, EventArgs e)
@@ -83,7 +40,7 @@ namespace AppWeb
 
             CrystalDecisions.CrystalReports.Engine.ReportDocument myReportDocument;
             myReportDocument = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
-            string strRuta = Server.MapPath("rptEmpConEval1.rpt");
+            string strRuta = Server.MapPath("rptEmpSinEval1.rpt");
             myReportDocument.Load(strRuta);
             myReportDocument.SetDataSource(dt);
             myReportDocument.SetParameterValue("FechaIni", AppUtilidad.stringToDateTime(FechaIni, "DD/MM/YYYY"));
@@ -104,7 +61,7 @@ namespace AppWeb
 
             CrystalDecisions.CrystalReports.Engine.ReportDocument myReportDocument;
             myReportDocument = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
-            string strRuta = Server.MapPath("rptEmpConEval1.rpt");
+            string strRuta = Server.MapPath("rptEmpSinEval1.rpt");
             myReportDocument.Load(strRuta);
             myReportDocument.SetDataSource(dt);
             myReportDocument.SetParameterValue("FechaIni", AppUtilidad.stringToDateTime(FechaIni, "DD/MM/YYYY"));

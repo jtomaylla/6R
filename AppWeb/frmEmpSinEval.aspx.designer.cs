@@ -10,7 +10,7 @@
 namespace AppWeb {
     
     
-    public partial class EmpConEval1 {
+    public partial class frmEmpSinEval {
         
         /// <summary>
         /// Control Head1.
@@ -31,12 +31,30 @@ namespace AppWeb {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control CrystalReportViewer1.
+        /// Control btnpdf.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::CrystalDecisions.Web.CrystalReportViewer CrystalReportViewer1;
+        protected global::System.Web.UI.WebControls.Button btnpdf;
+        
+        /// <summary>
+        /// Control btnexcel.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnexcel;
+        
+        /// <summary>
+        /// Control crvReporte.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::CrystalDecisions.Web.CrystalReportViewer crvReporte;
     }
 }

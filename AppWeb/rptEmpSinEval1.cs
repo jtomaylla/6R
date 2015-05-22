@@ -16,14 +16,14 @@ namespace AppWeb {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class rptEmpConEval1 : ReportClass {
+    public class rptEmpSinEval1 : ReportClass {
         
-        public rptEmpConEval1() {
+        public rptEmpSinEval1() {
         }
         
         public override string ResourceName {
             get {
-                return "rptEmpConEval1.rpt";
+                return "rptEmpSinEval1.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace AppWeb {
         
         public override string FullResourceName {
             get {
-                return "AppWeb.rptEmpConEval1.rpt";
+                return "AppWeb.rptEmpSinEval1.rpt";
             }
             set {
                 // Do nothing
@@ -122,9 +122,9 @@ namespace AppWeb {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedrptEmpConEval1 : Component, ICachedReport {
+    public class CachedrptEmpSinEval1 : Component, ICachedReport {
         
-        public CachedrptEmpConEval1() {
+        public CachedrptEmpSinEval1() {
         }
         
         [Browsable(false)]
@@ -161,7 +161,7 @@ namespace AppWeb {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            rptEmpConEval1 rpt = new rptEmpConEval1();
+            rptEmpSinEval1 rpt = new rptEmpSinEval1();
             rpt.Site = this.Site;
             return rpt;
         }
