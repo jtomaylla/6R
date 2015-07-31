@@ -43,8 +43,10 @@ namespace AppWeb
             string strRuta = Server.MapPath("rptEmpSinEval1.rpt");
             myReportDocument.Load(strRuta);
             myReportDocument.SetDataSource(dt);
-            myReportDocument.SetParameterValue("FechaIni", AppUtilidad.stringToDateTime(FechaIni, "DD/MM/YYYY"));
-            myReportDocument.SetParameterValue("FechaFin", AppUtilidad.stringToDateTime(FechaFin, "DD/MM/YYYY"));
+            //myReportDocument.SetParameterValue("FechaIni", AppUtilidad.stringToDateTime(FechaIni, "DD/MM/YYYY"));
+            //myReportDocument.SetParameterValue("FechaFin", AppUtilidad.stringToDateTime(FechaFin, "DD/MM/YYYY"));
+            myReportDocument.SetParameterValue("FechaIni", FechaIni);
+            myReportDocument.SetParameterValue("FechaFin", FechaFin);
 
             myReportDocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, false, "Listado");
         }
@@ -64,9 +66,10 @@ namespace AppWeb
             string strRuta = Server.MapPath("rptEmpSinEval1.rpt");
             myReportDocument.Load(strRuta);
             myReportDocument.SetDataSource(dt);
-            myReportDocument.SetParameterValue("FechaIni", AppUtilidad.stringToDateTime(FechaIni, "DD/MM/YYYY"));
-            myReportDocument.SetParameterValue("FechaFin", AppUtilidad.stringToDateTime(FechaFin, "DD/MM/YYYY"));
-
+            //myReportDocument.SetParameterValue("FechaIni", AppUtilidad.stringToDateTime(FechaIni, "DD/MM/YYYY"));
+            //myReportDocument.SetParameterValue("FechaFin", AppUtilidad.stringToDateTime(FechaFin, "DD/MM/YYYY"));
+            myReportDocument.SetParameterValue("FechaIni", FechaIni);
+            myReportDocument.SetParameterValue("FechaFin", FechaFin);
             myReportDocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.Excel, Response, false, "Listado");
         }
 

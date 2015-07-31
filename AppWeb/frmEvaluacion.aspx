@@ -54,7 +54,7 @@
         <asp:BoundField ReadOnly="True" DataField="IdCabecera" HeaderText="ID" ItemStyle-Width="50px"></asp:BoundField>
         <asp:BoundField ReadOnly="True" DataField="Titulo" HeaderText="Nombre Puesto" ItemStyle-Width="500px"></asp:BoundField>
         <asp:BoundField ReadOnly="True" DataField="NombreUsuario" HeaderText="Evaluador" ItemStyle-Width="200px"></asp:BoundField>
-        <asp:BoundField ReadOnly="True" DataField="FechaRegistro" HeaderText="Fecha Registro" ItemStyle-Width="100px"></asp:BoundField>
+        <asp:BoundField ReadOnly="True" DataField="FechaRegistro" HeaderText="Fecha Registro" DataFormatString="{0:dd/MM/yyyy}" ItemStyle-Width="100px"></asp:BoundField>
         <asp:TemplateField ShowHeader="False">
             <ItemTemplate>
                 <asp:Button ID="btnVerFormato" runat="server" Text="Ver" 

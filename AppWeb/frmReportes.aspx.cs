@@ -21,6 +21,7 @@ namespace AppWeb
         protected void Page_Load(object sender, EventArgs e)
         {
             this.lblTitulo.Text = "";
+            this.btnImprimir.Attributes.Add("onclick", "return js_validar();");
             if (!Page.IsPostBack)
             {
                 InicializaPagina();
@@ -47,7 +48,7 @@ namespace AppWeb
             this.panRepEval.Visible=true;
             this.lblTitulo.Text = "Colaboradores con Evaluaciones";
             this.txtFechaInicio.Text = "01/01/2000";
-            this.txtFechaFin.Text = DateTime.Today.ToShortDateString();
+            //this.txtFechaFin.Text = DateTime.Today.ToShortDateString();
         }
 
         protected void lnkPrint2_Click(object sender, EventArgs e)
@@ -57,20 +58,20 @@ namespace AppWeb
             this.panRepEval.Visible=true;
             this.lblTitulo.Text = "Colaboradores sin Evaluaciones";
             this.txtFechaInicio.Text = "01/01/2000";
-            this.txtFechaFin.Text = DateTime.Today.ToShortDateString();
+            //this.txtFechaFin.Text = DateTime.Today.ToShortDateString();
         }
 
-        protected void Imprimir(string frmNombre,int codigounidad, DateTime fechaini, DateTime fechafin)
+        protected void Imprimir(string frmNombre, int codigounidad, string fechaini, string fechafin)
         {
             String CodigoUnidad = codigounidad.ToString();
-            String FechaIni = fechaini.ToShortDateString();
-            String FechaFin = fechafin.ToShortDateString();
+            //String FechaIni = fechaini.ToShortDateString();
+            //String FechaFin = fechafin.ToShortDateString();
 
             var appSettings = ConfigurationManager.AppSettings;
             string linkPag = appSettings["LinkPag"];
 
             string strLink = linkPag + "/" + frmNombre;
-            strLink += "?CodigoUnidad=" + CodigoUnidad + "&FechaIni=" + FechaIni + "&FechaFin=" + FechaFin;
+            strLink += "?CodigoUnidad=" + CodigoUnidad + "&FechaIni=" + fechaini + "&FechaFin=" + fechafin;
 
             Response.Redirect(strLink);
         }
@@ -81,15 +82,15 @@ namespace AppWeb
             {
                 Imprimir("frmEmpConEval.aspx",
                     int.Parse(ddlUnidad.SelectedValue.ToString()),
-                    AppUtilidad.stringToDateTime(this.txtFechaInicio.Text, "DD/MM/YYYY"),
-                    AppUtilidad.stringToDateTime(this.txtFechaFin.Text, "DD/MM/YYYY"));
+                    this.txtFechaInicio.Text,
+                    this.txtFechaFin.Text);
             }
             if (this.txtIdReporte.Text == "2")
             {
                 Imprimir("frmEmpSinEval.aspx",
                     int.Parse(ddlUnidad.SelectedValue.ToString()),
-                    AppUtilidad.stringToDateTime(this.txtFechaInicio.Text, "DD/MM/YYYY"),
-                    AppUtilidad.stringToDateTime(this.txtFechaFin.Text, "DD/MM/YYYY"));
+                    this.txtFechaInicio.Text,
+                    this.txtFechaFin.Text);
             }
         }
     }

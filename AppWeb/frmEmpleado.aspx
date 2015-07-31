@@ -58,7 +58,7 @@
         <asp:BoundField ReadOnly="True" DataField="Grado" HeaderText="Grado" ItemStyle-Width="120px"></asp:BoundField>
         <asp:BoundField ReadOnly="True" DataField="Unidad" HeaderText="Unidad" ItemStyle-Width="120px"></asp:BoundField>
         <asp:BoundField ReadOnly="True" DataField="Sede" HeaderText="Sede" ItemStyle-Width="120px"></asp:BoundField>
-        <asp:BoundField ReadOnly="True" DataField="FechaIngreso" HeaderText="Fecha Ingreso" ItemStyle-Width="100px"></asp:BoundField>
+        <asp:BoundField ReadOnly="True" DataField="FechaIngreso" HeaderText="Fecha Ingreso" DataFormatString="{0:dd/MM/yyyy}" ItemStyle-Width="100px"></asp:BoundField>
         <asp:CheckBoxField DataField="EstadoBool" HeaderText="Estado"   />
         <asp:TemplateField ShowHeader="False">
             <ItemTemplate>

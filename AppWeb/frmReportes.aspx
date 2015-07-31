@@ -2,6 +2,38 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadContent" runat="server">
     <script type="text/javascript" language=javascript src="Scripts/popcalendar.js"></script>
+        <script type="text/javascript" language="javascript">
+
+            function js_validar() {
+                var frm = document.getElementById("formmain");
+                var txtFechaInicio = document.getElementById("<%= txtFechaInicio.ClientID%>");
+                var txtFechaFin = document.getElementById("<%= txtFechaFin.ClientID%>");
+
+                if (!JS_hasValue(txtFechaInicio, "TEXT")) {
+                    if (!JS_onError(frm, txtFechaInicio, "TEXT", "Seleccione fecha inicial"))
+                        return false;
+                }
+
+                if (!JS_checkeurodate(txtFechaInicio.value)) {
+                    if (!JS_onError(frm, txtFechaInicio, "TEXT", "Seleccione fecha inicial valida (DD/MM/YYYY)"))
+                        return false;
+                }
+
+                if (!JS_hasValue(txtFechaFin, "TEXT")) {
+                    if (!JS_onError(frm, txtFechaFin, "TEXT", "Seleccione fecha final"))
+                        return false;
+                }
+
+                if (!JS_checkeurodate(txtFechaFin.value)) {
+                    if (!JS_onError(frm, txtFechaFin, "TEXT", "Seleccione fecha final valida (DD/MM/YYYY)"))
+                        return false;
+                }
+
+
+                return true;
+            }
+
+    </script>
 
     <style type="text/css">
         .style1
@@ -86,7 +118,7 @@
                     <script language="javascript">
 		            <!--
                         if (!document.layers) {
-                            document.write("<input type=button onclick='popUpCalendar(this, MainContent_txtFechaFin, \"dd/mm/yyyy\")'  name='select1' value='...' style='font-size:11px'>")
+                            document.write("<input type=button onclick='popUpCalendar(this, MainContent_txtFechaFin, \"dd/mm/yyyy\")'  name='select2' value='...' style='font-size:11px'>")
                         }
 		            //-->
 		            </script>
